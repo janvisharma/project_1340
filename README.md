@@ -2,4 +2,4 @@
 
 ### Group members
 - Sean Chok (3035551644)
-- Janvi Sharma
+- Janvi Sharma (3035552894)
