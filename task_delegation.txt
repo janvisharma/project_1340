@@ -1,0 +1,26 @@
+Janvi
+- Create
+
+- Update
+
+- Delete
+
+- Fire employee
+
+
+
+Sean
+- Class interface and implementation
+4 April
+
+- Makefile (continuous update)
+5 April
+
+- File I/O
+10 April
+
+- Read (7th April)
+8 April
+
+- A lot of sorting
+20 April
