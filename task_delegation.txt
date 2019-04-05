@@ -10,17 +10,20 @@ Janvi
 
 
 Sean
-- Class interface and implementation
+- Class interface and implementation - done
 4 April
 
-- Makefile (continuous update)
+- Makefile (continuous update) - done
 5 April
+
+- simple user interface and basic read function
+7 April
+
+- arrays of employee classes
+8 April
 
 - File I/O
 10 April
-
-- Read (7th April)
-8 April
 
 - A lot of sorting
 20 April
