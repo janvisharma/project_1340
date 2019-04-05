@@ -1,9 +1,10 @@
 # 2018/19 Semester 2 ENGG1340 Course Project (Group 9)
 
-### Group members
-- Sean Chok (3035551644)
+#### Group members
 - Janvi Sharma (3035552894)
+- Sean Chok (3035551644)
 
+## Introduction
 ### Problem Statement
 Janvi is a startup CEO, who is running Nord Etoile, a personal care & fragrance store. Like any other startup (which is always short on cash), Nord Etoile faces deep troubles with its human resources department; that is, its HR manager and software / hardware developer, Sean always has headaches recording, finding, editing, and removing employee information because he has STML. Clearly, something must be done to provide a remedy. This is where a comprehensive employee management system (written in C++) comes in.
 
@@ -24,3 +25,25 @@ The program will be menu driven, and it will contain the following features:
 4. Edit the details of a current employee.
 5. Fire an employee, update this status in the record of all employees.
 6. Search for all employees with salary greater than a specific entered record.
+
+## Building and Running the Program
+We have made using the program a rather simple task for anyone with a Unix-based terminal. Just follow the following instructions, and execute these commands in order. However, you are required to have [git](https://www.atlassian.com/git/tutorials/install-git), [g++ compiler](https://www.cs.odu.edu/~zeil/cs250PreTest/latest/Public/installingACompiler/), and [make](https://www.gnu.org/software/make/) installed.
+
+Clone this github repo.
+
+`git clone https://github.com/janvisharma/project_1340.git`
+
+Go into the project root directory.
+
+`cd project_1340`
+
+Build the main program using make. *Our makefile defaults to compiling main.cpp*
+
+`make`
+
+Start running the program.
+
+`./main`
+
+## Our Data Structure
+### The Employee Class
