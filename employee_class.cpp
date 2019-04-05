@@ -4,16 +4,33 @@
 
 using namespace std;
 
-void Employee::GetName()
-{
-  cout<<"Enter name ";
-  cin>>name;
-  cout<<"NAMEEE "<<name;
+Employee::Employee(void) {
+  cout << "Creating a new employee..." << endl;
 }
 
-void Employee::GetId()
-{
-  cout<<"enter id ";
-  cin>>id;
-  cout<<"id is "<<id;
+// setter functions
+void Employee::setFirstName(string input) {
+  firstName = input;
+}
+
+void Employee::setLastName(string input) {
+  lastName = input;
+}
+
+void Employee::setEmployeeId(string input) {
+  employeeId = input;
+}
+
+
+// getter functions
+string Employee::getFirstName() {
+  return firstName;
+}
+
+string Employee::getLastName() {
+  return lastName;
+}
+
+string Employee::getEmployeeId() {
+  return employeeId;
 }

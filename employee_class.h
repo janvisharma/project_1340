@@ -1,19 +1,32 @@
 #include <string>
 
+using namespace std;
+
 class Employee
 {
   public:
-    void GetName();
-    void GetId();
+    // class constructor
+    Employee();
+
+    // setter functions
+    void setFirstName(string);
+    void setLastName(string);
+    void setEmployeeId(string);
+
+    // getter functions
+    string getFirstName(void);
+    string getLastName(void);
+    string getEmployeeId(void);
 
   private:
-    char name[20];
-    int id;
+    string firstName;
+    string lastName;
+    string employeeId;
     int age;
-    char role[20];
+    string role;
     int salary;
-    char address[20];
-    int ph_num;
-    char date_of_birth[10];
+    string address;
+    string phoneNumber;
+    string dateOfBirth;
 
 };
