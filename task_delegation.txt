@@ -1,11 +1,13 @@
 Janvi
-- Create
+- complete user interface
 
-- Update
+- create
 
-- Delete
+- update
 
-- Fire employee
+- delete
+
+- fire employee
 
 
 

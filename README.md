@@ -37,7 +37,7 @@ Go into the project root directory.
 
 `cd project_1340`
 
-Build the main program using make. *Our makefile defaults to compiling main.cpp*
+Build the main program using make. *Our makefile defaults to compiling main.cpp.*
 
 `make`
 
