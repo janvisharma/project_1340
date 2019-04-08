@@ -22,9 +22,11 @@ ifstream openIfstream(string filename) {
 }
 
 // read employee data file and return array of employee classes
-void readEmployeeDataFile(ifstream fin) {
+Employee * readEmployeeDataFile(ifstream& fin) {
   // create dynamic array
-  // Employee * employeesArray = new Employee [5];
+  int employeesArraySize = 5;
+  Employee * employeesArray = new Employee[employeesArraySize];
+  Employee thisEmployee;
 
   // read the first line as a header
   string headerLine;
@@ -34,17 +36,26 @@ void readEmployeeDataFile(ifstream fin) {
   string dataLine;
   int employeeCounter = 0;
   int dataLineDelimiterPosition;
-  // int numberOfEmployeeAttributes = getNumberOfEmployeeAttributes();
-  // string employeeAttributes = new string[numberOfEmployeeAttributes];
-  string employeeAttributes[9]; int employeeAttributesCounter = 0;
+  int numberOfEmployeeAttributes = thisEmployee.getNumberOfEmployeeAttributes();
+  string * employeeAttributes = new string[numberOfEmployeeAttributes];
+  int employeeAttributesCounter;
+
   while (getline(fin, dataLine)) {
-    // Employee thisEmployee;
     // read each data attribute
-    while ((dataLineDelimiterPosition = dataLine.find(" | ")) != string::npos) {
+    employeeAttributesCounter = 0;
+    while ((dataLineDelimiterPosition = dataLine.find(" |")) != string::npos) {
       employeeAttributes[employeeAttributesCounter++] = dataLine.substr(0, dataLineDelimiterPosition);
-      cout << employeeAttributes[employeeAttributesCounter - 1] << endl; // temporary
       dataLine.erase(0, dataLineDelimiterPosition + 3);
     }
 
+    // store this employee's attributes by calling setter function
+    // thisEmployee.setAllAttributes(employeeAttributes);
+    thisEmployee.setFirstName(employeeAttributes[0]); // for testing only
+    thisEmployee.setLastName(employeeAttributes[1]); // for testing only
+    // store this employee's data read from current dataLine into array
+    employeesArray[employeeCounter++] = thisEmployee;
   }
+
+  cout << "Employee data file has been read, array of employees has been created..." << endl;
+  return employeesArray;
 }

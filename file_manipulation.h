@@ -9,4 +9,4 @@ bool checkFileStream(string, bool);
 
 ifstream openIfstream(string);
 
-void readEmployeeDataFile(ifstream fin);
+Employee * readEmployeeDataFile(ifstream&);

@@ -21,6 +21,7 @@ int main() {
   const string employee_data_filename = "employee_data.txt";
   ifstream fin = openIfstream(employee_data_filename);
   checkFileStream(employee_data_filename, fin.fail());
+  readEmployeeDataFile(fin);
   fin.close();
 
   // menu-based navigation
