@@ -34,3 +34,8 @@ string Employee::getLastName() {
 string Employee::getEmployeeId() {
   return employeeId;
 }
+
+
+int Employee::getNumberOfEmployeeAttributes() {
+  return numberOfEmployeeAttributes;
+}

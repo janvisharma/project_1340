@@ -1,3 +1,6 @@
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
+
 #include <string>
 
 using namespace std;
@@ -18,6 +21,8 @@ class Employee
     string getLastName(void);
     string getEmployeeId(void);
 
+    int getNumberOfEmployeeAttributes(void);
+
   private:
     string firstName;
     string lastName;
@@ -28,5 +33,7 @@ class Employee
     string address;
     string phoneNumber;
     string dateOfBirth;
-
+    int numberOfEmployeeAttributes = 9;
 };
+
+#endif
