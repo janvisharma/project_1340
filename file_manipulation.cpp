@@ -17,9 +17,9 @@ bool checkFileStream(string filename, bool isFail) {
   return !(isFail);
 }
 
-ifstream openIfstream(string filename) {
-  ifstream fin (filename.c_str());
-  return fin;
+bool openIfstream(ifstream & fin, string filename) {
+  fin.open(filename.c_str());
+  return checkFileStream(filename, fin.fail());
 }
 
 // read employee data file and return array of employee classes

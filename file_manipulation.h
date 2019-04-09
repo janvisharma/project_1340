@@ -8,6 +8,6 @@ using namespace std;
 
 bool checkFileStream(string, bool);
 
-ifstream openIfstream(string);
+bool openIfstream(ifstream &, string);
 
 Employee * readEmployeeDataFile(ifstream&);

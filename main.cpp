@@ -19,10 +19,10 @@ int main() {
 
   // user interface
   // load employee data file
-  const string employee_data_filename = "employee_data.txt";
-  ifstream fin = openIfstream(employee_data_filename);
-  checkFileStream(employee_data_filename, fin.fail());
-  Employee * employeesArray = readEmployeeDataFile(fin);
+  const string employee_data_filename = "emploee_data.txt";
+  ifstream fin;
+  bool isOpen = openIfstream(fin, employee_data_filename);
+  Employee * employeesArray = isOpen ? readEmployeeDataFile(fin) : NULL;
   fin.close();
 
   // menu-based navigation
