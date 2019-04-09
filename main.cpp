@@ -4,6 +4,7 @@
 #include "employee_class.h"
 #include "file_manipulation.h"
 #include "navigation.h"
+#include "dynamic_array.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ int main() {
   const string employee_data_filename = "employee_data.txt";
   ifstream fin = openIfstream(employee_data_filename);
   checkFileStream(employee_data_filename, fin.fail());
-  readEmployeeDataFile(fin);
+  Employee * employeesArray = readEmployeeDataFile(fin);
   fin.close();
 
   // menu-based navigation

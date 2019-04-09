@@ -1,7 +1,7 @@
 Janvi
 - complete user interface
 
-- create
+- create (setAllAttributes in Employee class method)
 
 - update
 
@@ -18,10 +18,10 @@ Sean
 - Makefile (continuous update) - done
 5 April
 
-- simple user interface and basic read function
+- simple user interface and basic read function - done
 7 April
 
-- arrays of employee classes
+- arrays of employee classes - done
 8 April
 
 - File I/O

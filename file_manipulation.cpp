@@ -1,5 +1,6 @@
 #include "file_manipulation.h"
 #include "employee_class.h"
+#include "dynamic_array.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -22,8 +23,8 @@ ifstream openIfstream(string filename) {
 }
 
 // read employee data file and return array of employee classes
-Employee * readEmployeeDataFile(ifstream& fin) {
-  // create dynamic array
+Employee * readEmployeeDataFile(ifstream &fin) {
+  // create dynamic array with initial size of 5
   int employeesArraySize = 5;
   Employee * employeesArray = new Employee[employeesArraySize];
   Employee thisEmployee;
@@ -40,8 +41,9 @@ Employee * readEmployeeDataFile(ifstream& fin) {
   string * employeeAttributes = new string[numberOfEmployeeAttributes];
   int employeeAttributesCounter;
 
+  // read each line of data
   while (getline(fin, dataLine)) {
-    // read each data attribute
+    // read each employee attribute into array
     employeeAttributesCounter = 0;
     while ((dataLineDelimiterPosition = dataLine.find(" |")) != string::npos) {
       employeeAttributes[employeeAttributesCounter++] = dataLine.substr(0, dataLineDelimiterPosition);
@@ -53,9 +55,14 @@ Employee * readEmployeeDataFile(ifstream& fin) {
     thisEmployee.setFirstName(employeeAttributes[0]); // for testing only
     thisEmployee.setLastName(employeeAttributes[1]); // for testing only
     // store this employee's data read from current dataLine into array
+    // expand array if array size is too small
+    if (employeeCounter + 1 == employeesArraySize) {
+      employeesArray = expandEmployeesArray(employeesArray, employeesArraySize);
+    }
     employeesArray[employeeCounter++] = thisEmployee;
   }
 
   cout << "Employee data file has been read, array of employees has been created..." << endl;
+
   return employeesArray;
 }

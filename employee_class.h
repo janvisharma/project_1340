@@ -16,6 +16,8 @@ class Employee
     void setLastName(string);
     void setEmployeeId(string);
 
+    void setAllAttributes(string []);
+
     // getter functions
     string getFirstName(void);
     string getLastName(void);

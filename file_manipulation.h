@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include "employee_class.h"
+#include "dynamic_array.h"
 
 using namespace std;
 

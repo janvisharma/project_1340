@@ -46,4 +46,6 @@ Start running the program.
 `./main`
 
 ## Our Data Structure
-### The Employee Class
+### Level 1: The Employee Class
+
+### Level 2: Array of Employee(s)
