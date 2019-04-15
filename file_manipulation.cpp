@@ -57,7 +57,7 @@ Employee * readEmployeeDataFile(ifstream &fin) {
     // store this employee's data read from current dataLine into array
     // expand array if array size is too small
     if (employeeCounter + 1 == employeesArraySize) {
-      employeesArray = expandEmployeesArray(employeesArray, employeesArraySize);
+      expandEmployeesArray(employeesArray, employeesArraySize);
     }
     employeesArray[employeeCounter++] = thisEmployee;
   }
