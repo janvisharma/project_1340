@@ -51,9 +51,7 @@ Employee * readEmployeeDataFile(ifstream &fin) {
     }
 
     // store this employee's attributes by calling setter function
-    // thisEmployee.setAllAttributes(employeeAttributes);
-    thisEmployee.setFirstName(employeeAttributes[0]); // for testing only
-    thisEmployee.setLastName(employeeAttributes[1]); // for testing only
+    thisEmployee.setAllAttributes(employeeAttributes);
     // store this employee's data read from current dataLine into array
     // expand array if array size is too small
     if (employeeCounter + 1 == employeesArraySize) {
@@ -62,7 +60,7 @@ Employee * readEmployeeDataFile(ifstream &fin) {
     employeesArray[employeeCounter++] = thisEmployee;
   }
 
-  cout << "Employee data file has been read, array of employees has been created..." << endl;
+  cout << "Employee data file has been read, array of employees has been created.\nNumber of employee records: " << employeeCounter << endl;
 
   return employeesArray;
 }
