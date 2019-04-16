@@ -1,6 +1,8 @@
 #include "employee_class.h"
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
@@ -21,6 +23,48 @@ void Employee::setEmployeeId(string input) {
   employeeId = input;
 }
 
+void Employee::setAge(string input) {
+  age = stoi(input);
+}
+
+void Employee::setRole(string input) {
+  role = input;
+}
+
+void Employee::setSalary(string input) {
+   salary = stod(input);
+}
+
+void Employee::setAddress(string input) {
+  address = input;
+}
+
+void Employee::setPhoneNumber(string input) {
+  phoneNumber = input;
+}
+
+void Employee::setDateOfBirth(string input) {
+  dateOfBirth = input;
+}
+
+void Employee::setIsAnEmployee(string input) {
+  transform(input.begin(), input.end(), input.begin(), ::tolower);
+  isAnEmployee = input == "true";
+}
+
+void Employee::setAllAttributes(string input[]){
+  setFirstName(input[0]);
+  setLastName(input[1]);
+  setEmployeeId(input[2]);
+  setAge(input[3]);
+  setRole(input[4]);
+  setSalary(input[5]);
+  setAddress(input[6]);
+  setPhoneNumber(input[7]);
+  setDateOfBirth(input[8]);
+  setIsAnEmployee(input[9]);
+}
+
 
 // getter functions
 string Employee::getFirstName() {
@@ -35,6 +79,33 @@ string Employee::getEmployeeId() {
   return employeeId;
 }
 
+int Employee::getAge() {
+  return age;
+}
+
+string Employee::getRole() {
+  return role;
+}
+
+double Employee::getSalary() {
+  return salary;
+}
+
+string Employee::getAddress() {
+  return address;
+}
+
+string Employee::getPhoneNumber() {
+  return phoneNumber;
+}
+
+string Employee::getDateOfBirth() {
+  return dateOfBirth;
+}
+
+bool Employee::getIsAnEmployee() {
+  return isAnEmployee;
+}
 
 int Employee::getNumberOfEmployeeAttributes() {
   return numberOfEmployeeAttributes;

@@ -15,6 +15,13 @@ class Employee
     void setFirstName(string);
     void setLastName(string);
     void setEmployeeId(string);
+    void setAge(string);
+    void setRole(string);
+    void setSalary(string);
+    void setAddress(string);
+    void setPhoneNumber(string);
+    void setDateOfBirth(string);
+    void setIsAnEmployee(string);
 
     void setAllAttributes(string []);
 
@@ -22,7 +29,14 @@ class Employee
     string getFirstName(void);
     string getLastName(void);
     string getEmployeeId(void);
-
+    int getAge(void);
+    string getRole(void);
+    double getSalary(void);
+    string getAddress(void);
+    string getPhoneNumber(void);
+    string getDateOfBirth(void);
+    bool getIsAnEmployee(void);
+  
     int getNumberOfEmployeeAttributes(void);
 
   private:
@@ -31,7 +45,7 @@ class Employee
     string employeeId;
     int age;
     string role;
-    int salary;
+    double salary;
     string address;
     string phoneNumber;
     string dateOfBirth;

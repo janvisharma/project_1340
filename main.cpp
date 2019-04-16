@@ -14,8 +14,9 @@ int main() {
   janvi.setFirstName("Janvi");
   janvi.setLastName("Sharma");
   janvi.setEmployeeId("3035552894");
+  janvi.setIsAnEmployee("TRU");
 
-  cout << janvi.getFirstName() << " " << janvi.getLastName() << " " << janvi.getEmployeeId() << endl;
+  cout << "\t\t" << janvi.getIsAnEmployee() << endl;
 
   // user interface
   // load employee data file
