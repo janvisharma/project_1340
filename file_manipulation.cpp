@@ -22,6 +22,11 @@ bool openIfstream(ifstream & fin, string filename) {
   return checkFileStream(filename, fin.fail());
 }
 
+bool openOfstream(ofstream & fout, string filename) {
+  fout.open(filename.c_str());
+  return checkFileStream(filename, fout.fail());
+}
+
 // read employee data file and return array of employee classes
 Employee * readEmployeeDataFile(ifstream &fin) {
   // create dynamic array with initial size of 5

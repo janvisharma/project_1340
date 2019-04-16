@@ -10,4 +10,6 @@ bool checkFileStream(string, bool);
 
 bool openIfstream(ifstream &, string);
 
+bool openOfstream(ofstream &, string);
+
 Employee * readEmployeeDataFile(ifstream&);
