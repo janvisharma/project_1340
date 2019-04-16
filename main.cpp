@@ -19,11 +19,27 @@ int main() {
 
   // user interface
   // load employee data file
-  const string employee_data_filename = "emploee_data.txt";
+  string employeeDataFilename;
+
+  cout << "Welcome back." << endl;
+  cout << "Please input name of employee data file: ";
+  cin>>employeeDataFilename;
+
   ifstream fin;
-  bool isOpen = openIfstream(fin, employee_data_filename);
-  Employee * employeesArray = isOpen ? readEmployeeDataFile(fin) : NULL;
+  bool isOpen = openIfstream(fin, employeeDataFilename);
+  while(!isOpen)
+  {
+    cout << "Please input valid file name: ";
+    cin>>employeeDataFilename;
+    isOpen = openIfstream(fin, employeeDataFilename);
+  }
+
+  Employee * employeesArray = readEmployeeDataFile(fin);
   fin.close();
+
+
+
+
 
   // menu-based navigation
   int userChoice = 1;
@@ -34,7 +50,11 @@ int main() {
 
     // menu
     cout << "0: Exit the program, and record changes to your employee data in the file you loaded." << endl;
-    cout << "1: " << endl;
+    cout << "1: Create a new employee record." << endl;
+    cout << "2: Search employees." << endl;
+    cout << "3: Display list of employees." << endl;
+    cout << "4: Modify record of an employee." << endl;
+    cout << "5: Fire an employee." << endl;
 
     cout << "-----------------------------------------------------" << endl;
 

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// User choice = 0, exit program
 void exitProgram() {
   cout << "*****************************************************" << endl;
   cout << "\nNord Etoile, thanks for using our employee management system. The changes made to your employee records have been fully reflected in the employee data file you loaded.\n\nWe wish you a pleasant day.\n" << endl;

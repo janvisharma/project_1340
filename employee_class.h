@@ -35,7 +35,8 @@ class Employee
     string address;
     string phoneNumber;
     string dateOfBirth;
-    int numberOfEmployeeAttributes = 9;
+    bool isAnEmployee;
+    int numberOfEmployeeAttributes = 10;
 };
 
 #endif
