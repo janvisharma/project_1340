@@ -3,4 +3,4 @@
 
 using namespace std;
 
-Employee * expandEmployeesArray(Employee * &, int &);
+void expandEmployeesArray(Employee * &, int &);

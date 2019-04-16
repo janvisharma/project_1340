@@ -1,22 +1,24 @@
-main: main.o employee_class.o file_manipulation.o navigation.o dynamic_array.o
-	g++ -pedantic-errors -std=c++11 main.o employee_class.o file_manipulation.o navigation.o dynamic_array.o -o main
+Objects = main.o employee_class.o file_manipulation.o navigation.o dynamic_array.o
+
+main: $(Objects)
+	g++ -pedantic-errors -std=c++11 $^ -o $@
 
 main.o: main.cpp employee_class.h file_manipulation.h navigation.h dynamic_array.h
-	g++ -pedantic-errors -std=c++11 -c main.cpp
+	g++ -pedantic-errors -std=c++11 -c $<
 
-employee_class.o: employee_class.h employee_class.cpp
-	g++ -pedantic-errors -std=c++11 -c employee_class.cpp
+employee_class.o: employee_class.cpp employee_class.h
+	g++ -pedantic-errors -std=c++11 -c $<
 
-file_manipulation.o: file_manipulation.h file_manipulation.cpp employee_class.h dynamic_array.h
-	g++ -pedantic-errors -std=c++11 -c file_manipulation.cpp
+file_manipulation.o: file_manipulation.cpp file_manipulation.h employee_class.h dynamic_array.h
+	g++ -pedantic-errors -std=c++11 -c $<
 
-navigation.o: navigation.h navigation.cpp
-	g++ -pedantic-errors -std=c++11 -c navigation.cpp
+navigation.o: navigation.cpp navigation.h
+	g++ -pedantic-errors -std=c++11 -c $<
 
-dynamic_array.o: dynamic_array.h dynamic_array.cpp
-	g++ -pedantic-errors -std=c++11 -c dynamic_array.cpp
+dynamic_array.o: dynamic_array.cpp dynamic_array.h
+	g++ -pedantic-errors -std=c++11 -c $<
 
 clean:
-	rm main main.o employee_class.o file_manipulation.o navigation.o dynamic_array.o
+	rm main $(Objects)
 
 .PHONY: clean

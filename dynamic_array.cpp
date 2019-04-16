@@ -4,15 +4,18 @@
 
 using namespace std;
 
-Employee * expandEmployeesArray(Employee * &employeesArray, int &currentArraySize) {
+void expandEmployeesArray(Employee * &employeesArray, int &currentArraySize) {
   Employee * largerEmployeesArray = new Employee[currentArraySize + 5];
   // copy all existing data from old smaller array to new larger array
   for (int i = 0; i < currentArraySize; i++) {
     largerEmployeesArray[i] = employeesArray[i];
   }
+
   currentArraySize += 5;
   // free up memory space allocated to old array
   delete [] employeesArray;
+  // change to new memory address
+  employeesArray = largerEmployeesArray;
 
-  return largerEmployeesArray;
+  return;
 }
