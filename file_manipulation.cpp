@@ -72,11 +72,18 @@ Employee * readEmployeeDataFile(ifstream &fin, int & employeeCounter) {
 }
 
 void writeEmployeeDataFile(ofstream & fout, Employee * employeesArray, int employeeCounter) {
+  // delimiter symbol
+  string delimiter = " | ";
+
   // output header line
-  fout << "First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status | " << endl;
+  string * attributesHeader = employeesArray[0].getAttributesHeader();
+  for (int i = 0; i < employeesArray[0].getNumberOfEmployeeAttributes(); i++) {
+    fout << attributesHeader[i] << delimiter;
+  }
+  fout << endl;
 
   // output each Employee in employeesArray
-  Employee thisEmployee; string delimiter = " | ";
+  Employee thisEmployee;
   for (int i = 0; i < employeeCounter; i++) {
     thisEmployee = employeesArray[i];
     fout << thisEmployee.getFirstName() << delimiter;

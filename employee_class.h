@@ -36,7 +36,8 @@ class Employee
     string getPhoneNumber(void);
     string getDateOfBirth(void);
     bool getIsAnEmployee(void);
-  
+
+    string * getAttributesHeader(void);
     int getNumberOfEmployeeAttributes(void);
 
   private:
@@ -50,6 +51,8 @@ class Employee
     string phoneNumber;
     string dateOfBirth;
     bool isAnEmployee;
+
+    string attributesHeader[10] = {"First Name", "Last Name", "Employee ID", "Age", "Role", "Salary", "Address", "Phone Number", "Date of Birth", "Employee Status"};
     int numberOfEmployeeAttributes = 10;
 };
 

@@ -107,6 +107,11 @@ bool Employee::getIsAnEmployee() {
   return isAnEmployee;
 }
 
+
+string * Employee::getAttributesHeader(void) {
+  return &attributesHeader[0];
+}
+
 int Employee::getNumberOfEmployeeAttributes() {
   return numberOfEmployeeAttributes;
 }
