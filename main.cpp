@@ -5,7 +5,7 @@
 #include "employee_class.h"
 #include "file_manipulation.h"
 #include "navigation.h"
-#include "dynamic_array.h"
+#include "array_manipulation.h"
 
 using namespace std;
 
@@ -23,7 +23,7 @@ int main() {
 
   cout << "Welcome back." << endl;
   cout << "Please input name of employee data file: ";
-  cin>>employeeDataFilename;
+  cin >> employeeDataFilename;
 
   ifstream fin;
   bool isOpen = openIfstream(fin, employeeDataFilename);
@@ -38,7 +38,7 @@ int main() {
   fin.close();
 
   ofstream fout;
-  openOfstream(fout, "employee_data_out.txt");
+  openOfstream(fout, "employee_data.txt");
   writeEmployeeDataFile(fout, employeesArray);
 
 
@@ -54,8 +54,9 @@ int main() {
     cout << "1: Create a new employee record." << endl;
     cout << "2: Search employees." << endl;
     cout << "3: Display list of employees." << endl;
-    cout << "4: Modify record of an employee." << endl;
-    cout << "5: Fire an employee." << endl;
+    cout << "4: Sort employee records." << endl;
+    cout << "5: Modify record of an employee." << endl;
+    cout << "6: Fire an employee." << endl;
 
     cout << "-----------------------------------------------------" << endl;
 
@@ -67,11 +68,19 @@ int main() {
       case 0:
         {
           exitProgram();
+          break;
         }
 
       case 1:
         {
           cout << 1 << endl;
+          break;
+        }
+
+      case 4:
+        {
+          sortEmployeesArray(employeesArray);
+          break;
         }
     }
   }
