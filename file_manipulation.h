@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 #include "employee_class.h"
 #include "dynamic_array.h"
 
@@ -12,6 +13,6 @@ bool openIfstream(ifstream &, string);
 
 bool openOfstream(ofstream &, string);
 
-Employee * readEmployeeDataFile(ifstream &, int &);
+vector <Employee> readEmployeeDataFile(ifstream &);
 
-void writeEmployeeDataFile(ofstream &, Employee *, int);
+void writeEmployeeDataFile(ofstream &, vector <Employee>);

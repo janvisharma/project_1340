@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include <vector>
 
 using namespace std;
 
@@ -28,11 +29,10 @@ bool openOfstream(ofstream & fout, string filename) {
   return checkFileStream(filename, fout.fail());
 }
 
-// read employee data file and return array of employee classes
-Employee * readEmployeeDataFile(ifstream &fin, int & employeeCounter) {
-  // create dynamic array with initial size of 5
-  int employeesArraySize = 5;
-  Employee * employeesArray = new Employee[employeesArraySize];
+// read employee data file and return vector array of employee classes
+vector <Employee> readEmployeeDataFile(ifstream &fin) {
+  // create vector array of employees
+  vector <Employee> employeesArray;
   Employee thisEmployee;
 
   // read the first line as a header
@@ -41,7 +41,6 @@ Employee * readEmployeeDataFile(ifstream &fin, int & employeeCounter) {
 
   // create employee according to each line of data read
   string dataLine;
-  employeeCounter = 0;
   int dataLineDelimiterPosition;
   int numberOfEmployeeAttributes = thisEmployee.getNumberOfEmployeeAttributes();
   string * employeeAttributes = new string[numberOfEmployeeAttributes];
@@ -58,20 +57,16 @@ Employee * readEmployeeDataFile(ifstream &fin, int & employeeCounter) {
 
     // store this employee's attributes by calling setter function
     thisEmployee.setAllAttributes(employeeAttributes);
-    // store this employee's data read from current dataLine into array
-    // expand array if array size is too small
-    if (employeeCounter + 1 == employeesArraySize) {
-      expandEmployeesArray(employeesArray, employeesArraySize);
-    }
-    employeesArray[employeeCounter++] = thisEmployee;
+    // store this employee's data read from current dataLine into vector
+    employeesArray.push_back(thisEmployee);
   }
 
-  cout << "Employee data file has been read, array of employees has been created.\nNumber of employee records: " << employeeCounter << endl;
+  cout << "Employee data file has been read, array of employees has been created.\nNumber of employee records: " << employeesArray.size() << endl;
 
   return employeesArray;
 }
 
-void writeEmployeeDataFile(ofstream & fout, Employee * employeesArray, int employeeCounter) {
+void writeEmployeeDataFile(ofstream & fout, vector <Employee> employeesArray) {
   // delimiter symbol
   string delimiter = " | ";
 
@@ -84,7 +79,7 @@ void writeEmployeeDataFile(ofstream & fout, Employee * employeesArray, int emplo
 
   // output each Employee in employeesArray
   Employee thisEmployee;
-  for (int i = 0; i < employeeCounter; i++) {
+  for (int i = 0; i < employeesArray.size(); i++) {
     thisEmployee = employeesArray[i];
     fout << thisEmployee.getFirstName() << delimiter;
     fout << thisEmployee.getLastName() << delimiter;

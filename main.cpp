@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 #include "employee_class.h"
 #include "file_manipulation.h"
 #include "navigation.h"
@@ -33,13 +34,12 @@ int main() {
     isOpen = openIfstream(fin, employeeDataFilename);
   }
 
-  int employeeCounter;
-  Employee * employeesArray = readEmployeeDataFile(fin, employeeCounter);
+  vector <Employee> employeesArray = readEmployeeDataFile(fin);
   fin.close();
 
   ofstream fout;
   openOfstream(fout, "employee_data_out.txt");
-  writeEmployeeDataFile(fout, employeesArray, employeeCounter);
+  writeEmployeeDataFile(fout, employeesArray);
 
 
   // menu-based navigation
