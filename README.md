@@ -48,7 +48,7 @@ Start running the program.
 ### Level 1: The Employee Class
 
 
-### Level 2: Dynamic Vector of Employee(s)
+### Level 2: Dynamic Array (C++ Vectors) of Employee(s)
 We have considered using either dynamic arrays (C++ vector library) or linked lists to store the employee records, and evaluated the pros and cons of each approach. We found out that arrays are more suitable for our application due to a couple of reasons:
 - arrays take up less memory space than linked list, and our application may have to deal with a very big number of employees
 - a company does not hire / fire employees at a very high rate such that the ability of linked lists to quickly insert / delete employee records would be underused
