@@ -1,9 +1,7 @@
-#include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
 #include "employee_class.h"
-#include "dynamic_array.h"
 
 using namespace std;
 

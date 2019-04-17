@@ -1,6 +1,5 @@
 #include "file_manipulation.h"
 #include "employee_class.h"
-#include "dynamic_array.h"
 #include <iostream>
 #include <string>
 #include <fstream>

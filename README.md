@@ -22,8 +22,9 @@ The program will be menu driven, and it will contain the following features:
 1. Create record of a new employee with details such as ID, name, age, role & salary. Adding this record to the current record of employees.
 2. Search for employee records based on certain criteria.
 3. Display the list of all employees with job status (currently working or fired).
-4. Edit the details of a current employee.
-5. Fire an employee, update this status in the record of all employees.
+4. Sort the employee records.
+5. Edit the details of a current employee.
+6. Fire an employee, update this status in the record of all employees.
 
 ## Building and Running the Program
 We have made using the program a rather simple task for anyone with a Unix-based terminal. Just follow the following instructions, and execute these commands in order. However, you are required to have [git](https://www.atlassian.com/git/tutorials/install-git), [g++ compiler](https://www.cs.odu.edu/~zeil/cs250PreTest/latest/Public/installingACompiler/), and [make](https://www.gnu.org/software/make/) installed.
