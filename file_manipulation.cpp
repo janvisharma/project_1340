@@ -10,9 +10,9 @@ using namespace std;
 
 bool checkFileStream(string filename, bool isFail) {
   if (isFail) {
-    cout << "File: " << filename << " cannot be opened. Terminating the program..." << endl;
+    cout << "File: " << filename << " cannot be opened." << endl;
   } else {
-    cout << "File: " << filename << " has been successfully opened, its contents are being loaded..." << endl;
+    cout << "File: " << filename << " has been successfully opened." << endl;
   }
 
   return !(isFail);
