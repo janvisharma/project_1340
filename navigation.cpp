@@ -1,10 +1,12 @@
 #include "navigation.h"
 #include "employee_class.h"
 #include "array_manipulation.h"
+#include "file_manipulation.h"
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <fstream>
 
 using namespace std;
 
@@ -21,13 +23,18 @@ bool checkAndConvertToInteger(int & attributeInteger, string attributeSubstring,
 }
 
 // User choice = 0, exit program
-void exitProgram() {
+void exitProgram(string filename, vector <Employee> employeesArray) {
+  ofstream fout;
+  openOfstream(fout, filename.c_str());
+  writeEmployeeDataFile(fout, employeesArray);
+
   cout << "*****************************************************" << endl;
   cout << "\nNord Etoile, thanks for using our employee management system. The changes made to your employee records have been fully reflected in the employee data file you loaded.\n\nWe wish you a pleasant day.\n" << endl;
   cout << "*****************************************************" << endl;
   exit(1);
 }
 
+// User choice = 4, sort employee records
 void sortEmployeesArray(vector <Employee> & employeesArray) {
   // create placeholder employee to get attributesHeader data
   Employee thisEmployee;

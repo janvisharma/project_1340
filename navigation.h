@@ -4,6 +4,6 @@
 
 using namespace std;
 
-void exitProgram();
+void exitProgram(string, vector <Employee>);
 
 void sortEmployeesArray(vector <Employee> &);

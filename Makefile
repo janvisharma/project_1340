@@ -12,7 +12,7 @@ employee_class.o: employee_class.cpp employee_class.h
 file_manipulation.o: file_manipulation.cpp file_manipulation.h employee_class.h
 	g++ -pedantic-errors -std=c++11 -c $<
 
-navigation.o: navigation.cpp navigation.h employee_class.h array_manipulation.h
+navigation.o: navigation.cpp navigation.h employee_class.h file_manipulation.h array_manipulation.h
 	g++ -pedantic-errors -std=c++11 -c $<
 
 array_manipulation.o: array_manipulation.cpp array_manipulation.h

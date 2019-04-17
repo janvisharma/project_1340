@@ -37,11 +37,6 @@ int main() {
   vector <Employee> employeesArray = readEmployeeDataFile(fin);
   fin.close();
 
-  ofstream fout;
-  openOfstream(fout, "employee_data.txt");
-  writeEmployeeDataFile(fout, employeesArray);
-
-
   // menu-based navigation
   int userChoice = 1;
 
@@ -67,7 +62,7 @@ int main() {
       // all cases will call a corresponding function from navigation.h
       case 0:
         {
-          exitProgram();
+          exitProgram(employeeDataFilename, employeesArray);
           break;
         }
 
