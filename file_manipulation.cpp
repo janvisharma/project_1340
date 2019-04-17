@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -28,7 +29,7 @@ bool openOfstream(ofstream & fout, string filename) {
 }
 
 // read employee data file and return array of employee classes
-Employee * readEmployeeDataFile(ifstream &fin) {
+Employee * readEmployeeDataFile(ifstream &fin, int & employeeCounter) {
   // create dynamic array with initial size of 5
   int employeesArraySize = 5;
   Employee * employeesArray = new Employee[employeesArraySize];
@@ -40,7 +41,7 @@ Employee * readEmployeeDataFile(ifstream &fin) {
 
   // create employee according to each line of data read
   string dataLine;
-  int employeeCounter = 0;
+  employeeCounter = 0;
   int dataLineDelimiterPosition;
   int numberOfEmployeeAttributes = thisEmployee.getNumberOfEmployeeAttributes();
   string * employeeAttributes = new string[numberOfEmployeeAttributes];
@@ -68,4 +69,26 @@ Employee * readEmployeeDataFile(ifstream &fin) {
   cout << "Employee data file has been read, array of employees has been created.\nNumber of employee records: " << employeeCounter << endl;
 
   return employeesArray;
+}
+
+void writeEmployeeDataFile(ofstream & fout, Employee * employeesArray, int employeeCounter) {
+  // output header line
+  fout << "First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status | " << endl;
+
+  // output each Employee in employeesArray
+  Employee thisEmployee; string delimiter = " | ";
+  for (int i = 0; i < employeeCounter; i++) {
+    thisEmployee = employeesArray[i];
+    fout << thisEmployee.getFirstName() << delimiter;
+    fout << thisEmployee.getLastName() << delimiter;
+    fout << thisEmployee.getEmployeeId() << delimiter;
+    fout << thisEmployee.getAge() << delimiter;
+    fout << thisEmployee.getRole() << delimiter;
+    fout << fixed << setprecision(0) << thisEmployee.getSalary() << delimiter;
+    fout << thisEmployee.getAddress() << delimiter;
+    fout << thisEmployee.getPhoneNumber() << delimiter;
+    fout << thisEmployee.getDateOfBirth() << delimiter;
+    fout << (thisEmployee.getIsAnEmployee() ? "True" : "False") << delimiter;
+    fout << endl;
+  }
 }

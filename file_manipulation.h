@@ -12,4 +12,6 @@ bool openIfstream(ifstream &, string);
 
 bool openOfstream(ofstream &, string);
 
-Employee * readEmployeeDataFile(ifstream&);
+Employee * readEmployeeDataFile(ifstream &, int &);
+
+void writeEmployeeDataFile(ofstream &, Employee *, int);

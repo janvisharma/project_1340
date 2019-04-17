@@ -14,9 +14,7 @@ int main() {
   janvi.setFirstName("Janvi");
   janvi.setLastName("Sharma");
   janvi.setEmployeeId("3035552894");
-  janvi.setIsAnEmployee("TRU");
-
-  cout << "\t\t" << janvi.getIsAnEmployee() << endl;
+  janvi.setIsAnEmployee("TRUE");
 
   // user interface
   // load employee data file
@@ -31,15 +29,17 @@ int main() {
   while(!isOpen)
   {
     cout << "Please input valid file name: ";
-    cin>>employeeDataFilename;
+    cin >> employeeDataFilename;
     isOpen = openIfstream(fin, employeeDataFilename);
   }
 
-  Employee * employeesArray = readEmployeeDataFile(fin);
+  int employeeCounter;
+  Employee * employeesArray = readEmployeeDataFile(fin, employeeCounter);
   fin.close();
 
-
-
+  ofstream fout;
+  openOfstream(fout, "employee_data_out.txt");
+  writeEmployeeDataFile(fout, employeesArray, employeeCounter);
 
 
   // menu-based navigation
