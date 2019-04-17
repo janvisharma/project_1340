@@ -20,11 +20,10 @@ Some problems faced by Sean are:
 ### Program Features
 The program will be menu driven, and it will contain the following features:
 1. Create record of a new employee with details such as ID, name, age, role & salary. Adding this record to the current record of employees.
-2. Search for a specific record via employee ID, name, age or role.
+2. Search for employee records based on certain criteria.
 3. Display the list of all employees with job status (currently working or fired).
 4. Edit the details of a current employee.
 5. Fire an employee, update this status in the record of all employees.
-6. Search for all employees with salary greater than a specific entered record.
 
 ## Building and Running the Program
 We have made using the program a rather simple task for anyone with a Unix-based terminal. Just follow the following instructions, and execute these commands in order. However, you are required to have [git](https://www.atlassian.com/git/tutorials/install-git), [g++ compiler](https://www.cs.odu.edu/~zeil/cs250PreTest/latest/Public/installingACompiler/), and [make](https://www.gnu.org/software/make/) installed.
@@ -48,4 +47,11 @@ Start running the program.
 ## Our Data Structure
 ### Level 1: The Employee Class
 
+
 ### Level 2: Array of Employee(s)
+We have considered using either dynamic arrays or linked lists to store the employee records, and evaluated the pros and cons of each approach. We found out that arrays are more suitable for our application due to a couple of reasons:
+- arrays take up less memory space than linked list, and our application may have to deal with a very big number of employees
+- a company does not hire / fire employees at a very high rate such that the ability of linked lists to quickly insert / delete employee records would be underused
+- the application user is likely to be more interested in quickly looking up an employee record, and updating it; this means, a 'random access' approach using arrays would be better
+
+Hence, a dynamic array has been implemented.
