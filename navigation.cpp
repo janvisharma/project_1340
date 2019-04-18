@@ -103,9 +103,13 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
 
   // sort according to order
   for (int i = 0; i < order.size(); i++) {
-    cout << order[i] << " ";
+    // handle each attribute using a switch
     switch (order[i]) {
-      case 0: sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByFirstName);
+      case 0:
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByFirstName);
+      case 1:
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByLastName);
+      
     }
   }
 

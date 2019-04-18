@@ -8,3 +8,7 @@ using namespace std;
 bool compareEmployeesByFirstName(Employee employeeA, Employee employeeB) {
   return employeeA.getFirstName() <= employeeB.getFirstName();
 }
+
+bool compareEmployeesByLastName(Employee employeeA, Employee employeeB) {
+  return employeeA.getLastName() <= employeeB.getLastName();
+}

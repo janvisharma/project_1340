@@ -77,6 +77,11 @@ int main() {
           sortEmployeesArray(employeesArray);
           break;
         }
+
+      default:
+        {
+          cout << "\nPlease enter a valid number from the options given." << endl;
+        }
     }
   }
 
