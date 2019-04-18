@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "employee_class.h"
+#include "handle_user_input.h"
 
 using namespace std;
 
@@ -15,16 +16,6 @@ bool compareEmployeesByLastName(Employee employeeA, Employee employeeB) {
 }
 
 // filter functions
-
-// convert string to lowercase
-void convertStringToLower(string & string) {
-  for (int i = 0; i < string.size(); i++) {
-    if (isalpha(string[i])) {
-      string[i] = tolower(string[i]);
-    }
-  }
-}
-
 void filterEmployeesByFirstName(vector <Employee> employeesArray, vector <Employee> & filteredEmployeesArray, string searchValue) {
   for (int i = 0; i < employeesArray.size(); i++) {
     string thisEmployeeFirstName = employeesArray[i].getFirstName();

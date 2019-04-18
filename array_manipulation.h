@@ -9,8 +9,6 @@ bool compareEmployeesByLastName(Employee, Employee);
 
 
 // filter functions
-void convertStringToLower(string &);
-
 void filterEmployeesByFirstName(vector <Employee>, vector <Employee> &, string);
 
 void filterEmployeesByLastName(vector <Employee>, vector <Employee> &, string);

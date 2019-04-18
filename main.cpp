@@ -6,6 +6,7 @@
 #include "file_manipulation.h"
 #include "navigation.h"
 #include "array_manipulation.h"
+#include "handle_user_input.h"
 
 using namespace std;
 
