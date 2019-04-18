@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
+#include <cctype>
 
 using namespace std;
 
@@ -63,10 +64,19 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   while (!isValid) {
     orderLine += " ";
     while(orderLine.length() != 0) {
-      int indexOfSpace = orderLine.find(" ");
+      // get substring by removinng spaces
+      string attributeSubstring = "";
+      for (int i = 0; i < orderLine.length(); i++) {
+        if (!isspace(orderLine[i])) {
+          attributeSubstring += orderLine[i];
+        } else {
+          break;
+        }
+      }
+
       // check if substring is a number that is less than numberOfEmployeeAttributes
       int attributeInteger;
-      isValid = checkAndConvertToInteger(attributeInteger, orderLine.substr(0, indexOfSpace), thisEmployee.getNumberOfEmployeeAttributes());
+      isValid = checkAndConvertToInteger(attributeInteger, attributeSubstring, thisEmployee.getNumberOfEmployeeAttributes());
 
       if (!isValid) {
         vector<int>().swap(order);
@@ -75,7 +85,12 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
 
       // put into order vector
       order.push_back(attributeInteger);
-      orderLine.erase(0, indexOfSpace + 1);
+
+      // erase substring and subsequent spaces in orderLine
+      orderLine.erase(0, attributeSubstring.length());
+      while (orderLine.length() != 0 && isspace(orderLine[0])) {
+        orderLine.erase(0, 1);
+      }
     }
 
     // break isValid while loop if orderLine was exhausted properly and order size is less than numberOfEmployeeAttributes
@@ -88,6 +103,7 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
 
   // sort according to order
   for (int i = 0; i < order.size(); i++) {
+    cout << order[i] << " ";
     switch (order[i]) {
       case 0: sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByFirstName);
     }
