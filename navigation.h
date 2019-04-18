@@ -7,3 +7,5 @@ using namespace std;
 void exitProgram(string, vector <Employee>);
 
 void sortEmployeesArray(vector <Employee> &);
+
+void searchEmployees(vector <Employee>);

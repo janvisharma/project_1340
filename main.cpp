@@ -72,6 +72,12 @@ int main() {
           break;
         }
 
+      case 2:
+        {
+          searchEmployees(employeesArray);
+          break;
+        }
+
       case 4:
         {
           sortEmployeesArray(employeesArray);
