@@ -1,7 +1,9 @@
 Janvi
 - complete user interface
 
-- create (setAllAttributes in Employee class method)
+- setAllAttributes in Employee class method - done
+
+- create
 
 - update
 
@@ -24,8 +26,8 @@ Sean
 - arrays of employee classes - done
 8 April
 
-- File I/O
+- File I/O - done
 10 April
 
-- A lot of sorting
+- A lot of sorting - done
 20 April

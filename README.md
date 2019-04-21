@@ -56,3 +56,7 @@ We have considered using either dynamic arrays (C++ vector library) or linked li
 - the application user is likely to be more interested in quickly looking up an employee record, and updating it; this means, a 'random access' approach using arrays would be better
 
 Hence, a dynamic array using C++ vectors has been implemented.
+
+## Using the Program
+
+### Possible Further Improvements
