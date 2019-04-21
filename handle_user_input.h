@@ -9,6 +9,8 @@ string handleUserInputLine(string);
 // special function for selecting employee attributes for seaching and sorting
 bool checkAndConvertToIntegerForEmployeeAttributes(int &, string, int);
 
+string getValueFromStringStream(string);
+
 string getValueByString(string);
 
 int getValueByInteger(string);

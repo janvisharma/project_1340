@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include <cctype>
+#include <sstream>
 
 using namespace std;
 
@@ -96,68 +97,56 @@ bool checkAndConvertToBoolean(bool & valueBoolean, string valueString) {
 }
 
 
+// get value template function
+string getValueFromStringStream(string userPrompt) {
+  string valueLine = handleUserInputLine(userPrompt);
+  istringstream valueStream;
+  valueStream.str(valueLine);
+  string valueString = "";
+  valueStream >> valueString;
+  return valueString;
+}
+
 // get value by data type functions
 string getValueByString(string attribute) {
-  string searchValueLine;
   string userPrompt = "Please input " + attribute + ": ";
-  searchValueLine = handleUserInputLine(userPrompt);
-  searchValueLine += " ";
-  string searchValue = searchValueLine.substr(0, searchValueLine.find(" "));
-  while (searchValue.length() == 0) {
+  string valueString = getValueFromStringStream(userPrompt);
+  while (valueString.length() == 0) {
     userPrompt = "Please input valid " + attribute + ": ";
-    searchValueLine = handleUserInputLine(userPrompt);
-    searchValueLine += " ";
-    searchValue = searchValueLine.substr(0, searchValueLine.find(" "));
+    valueString = getValueFromStringStream(userPrompt);
   }
-
-  convertStringToLower(searchValue);
-  return searchValue;
+  return valueString;
 }
 
 int getValueByInteger(string attribute) {
-  string searchValueLine;
-  int searchValue;
+  int valueInteger;
   string userPrompt = "Please input " + attribute + ": ";
-  searchValueLine = handleUserInputLine(userPrompt);
-  searchValueLine += " ";
-  string searchValueString = searchValueLine.substr(0, searchValueLine.find(" "));
-  while (searchValueString.length() == 0 || !checkAndConvertToInteger(searchValue, searchValueString)) {
+  string valueString = getValueFromStringStream(userPrompt);
+  while (valueString.length() == 0 || !checkAndConvertToInteger(valueInteger, valueString)) {
     userPrompt = "Please input valid " + attribute + ": ";
-    searchValueLine = handleUserInputLine(userPrompt);
-    searchValueLine += " ";
-    searchValueString = searchValueLine.substr(0, searchValueLine.find(" "));
+    valueString = getValueFromStringStream(userPrompt);
   }
-  return searchValue;
+  return valueInteger;
 }
 
 double getValueByDouble(string attribute) {
-  string searchValueLine;
-  double searchValue;
+  double valueDouble;
   string userPrompt = "Please input " + attribute + ": ";
-  searchValueLine = handleUserInputLine(userPrompt);
-  searchValueLine += " ";
-  string searchValueString = searchValueLine.substr(0, searchValueLine.find(" "));
-  while (searchValueString.length() == 0 || !checkAndConvertToDouble(searchValue, searchValueString)) {
+  string valueString = getValueFromStringStream(userPrompt);
+  while (valueString.length() == 0 || !checkAndConvertToDouble(valueDouble, valueString)) {
     userPrompt = "Please input valid " + attribute + ": ";
-    searchValueLine = handleUserInputLine(userPrompt);
-    searchValueLine += " ";
-    searchValueString = searchValueLine.substr(0, searchValueLine.find(" "));
+    valueString = getValueFromStringStream(userPrompt);
   }
-  return searchValue;
+  return valueDouble;
 }
 
 bool getValueByBoolean(string attribute) {
-  string searchValueLine;
-  bool searchValue;
+  bool valueBoolean;
   string userPrompt = "Please input " + attribute + ": ";
-  searchValueLine = handleUserInputLine(userPrompt);
-  searchValueLine += " ";
-  string searchValueString = searchValueLine.substr(0, searchValueLine.find(" "));
-  while (searchValueString.length() == 0 || !checkAndConvertToBoolean(searchValue, searchValueString)) {
+  string valueString = getValueFromStringStream(userPrompt);
+  while (valueString.length() == 0 || !checkAndConvertToBoolean(valueBoolean, valueString)) {
     userPrompt = "Please input valid " + attribute + ": ";
-    searchValueLine = handleUserInputLine(userPrompt);
-    searchValueLine += " ";
-    searchValueString = searchValueLine.substr(0, searchValueLine.find(" "));
+    valueString = getValueFromStringStream(userPrompt);
   }
-  return searchValue;
+  return valueBoolean;
 }

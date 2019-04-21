@@ -17,6 +17,7 @@ bool compareEmployeesByLastName(Employee employeeA, Employee employeeB) {
 
 // filter functions
 void filterEmployeesByFirstName(vector <Employee> employeesArray, vector <Employee> & filteredEmployeesArray, string searchValue) {
+  convertStringToLower(searchValue);
   for (int i = 0; i < employeesArray.size(); i++) {
     string thisEmployeeFirstName = employeesArray[i].getFirstName();
     convertStringToLower(thisEmployeeFirstName);
@@ -27,6 +28,7 @@ void filterEmployeesByFirstName(vector <Employee> employeesArray, vector <Employ
 }
 
 void filterEmployeesByLastName(vector <Employee> employeesArray, vector <Employee> & filteredEmployeesArray, string searchValue) {
+  convertStringToLower(searchValue);
   for (int i = 0; i < employeesArray.size(); i++) {
     string thisEmployeeLastName = employeesArray[i].getLastName();
     convertStringToLower(thisEmployeeLastName);

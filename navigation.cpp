@@ -45,17 +45,12 @@ void searchEmployees(vector <Employee> employeesArray) {
   int numberOfEmployeeAttributes = listEmployeeAttributes();
 
   // prompt for selection of 1 attribute
-  string selectionLine;
   string userPrompt = "Please select 1 attribute as search criteria: ";
-  selectionLine = handleUserInputLine(userPrompt);
-  selectionLine += " ";
-  string attributeString = selectionLine.substr(0, selectionLine.find(" "));
+  string attributeString = getValueFromStringStream(userPrompt);
   int attributeInteger;
   while (!checkAndConvertToIntegerForEmployeeAttributes(attributeInteger, attributeString, numberOfEmployeeAttributes)) {
     userPrompt = "Invalid attribute selected. Please input again: ";
-    selectionLine = handleUserInputLine(userPrompt);
-    selectionLine += " ";
-    attributeString = selectionLine.substr(0, selectionLine.find(" "));
+    attributeString = getValueFromStringStream(userPrompt);
   }
 
   // search by using switch, prompt for searchValue
