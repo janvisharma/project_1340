@@ -127,7 +127,7 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   cout << "List of available employee attributes for sorting:" << endl;
   cout << "1: First Name" << endl;
   cout << "2: Last Name" << endl;
-  cout << "3: Last Name" << endl;
+  cout << "3: Employee ID" << endl;
   cout << "4: Age" << endl;
   cout << "5: Role" << endl;
   cout << "6: Salary" << endl;
@@ -184,7 +184,7 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   }
 
   // sort according to order
-  for (int i = 0; i < order.size(); i++) {
+  for (int i = order.size() - 1; i >= 0; i--) {
     // handle each attribute using a switch
     switch (order[i]) {
       case 1: {
@@ -193,6 +193,30 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
       }
       case 2: {
         sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByLastName);
+        break;
+      }
+      case 3: {
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByEmployeeId);
+        break;
+      }
+      case 4: {
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByAge);
+        break;
+      }
+      case 5: {
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByRole);
+        break;
+      }
+      case 6: {
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesBySalary);
+        break;
+      }
+      case 7: {
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByPhoneNumber);
+        break;
+      }
+      case 8: {
+        sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByIsAnEmployee);
         break;
       }
 
