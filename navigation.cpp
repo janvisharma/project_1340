@@ -34,7 +34,7 @@ void searchEmployees(vector <Employee> employeesArray) {
   cout << "List of available employee attributes for sorting:" << endl;
   cout << "1: First Name" << endl;
   cout << "2: Last Name" << endl;
-  cout << "3: Last Name" << endl;
+  cout << "3: Employee ID" << endl;
   cout << "4: Age" << endl;
   cout << "5: Role" << endl;
   cout << "6: Salary" << endl;
@@ -66,16 +66,39 @@ void searchEmployees(vector <Employee> employeesArray) {
       filterEmployeesByLastName(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
-
-    case 6: {
-      double searchValue = getValueByDouble("salary");
-      // filterEmployeesBySalary(employeesArray, filteredEmployeesArray, searchValue);
+    case 3: {
+      string searchValue = getValueByString("employee id");
+      filterEmployeesByEmployeeId(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
-
+    case 4: {
+      int searchValue = getValueByInteger("age");
+      filterEmployeesByAge(employeesArray, filteredEmployeesArray, searchValue);
+      break;
+    }
+    case 5: {
+      string searchValue = getValueByString("role");
+      filterEmployeesByRole(employeesArray, filteredEmployeesArray, searchValue);
+      break;
+    }
+    case 6: {
+      double searchValue = getValueByDouble("salary");
+      filterEmployeesBySalary(employeesArray, filteredEmployeesArray, searchValue);
+      break;
+    }
+    case 7: {
+      string searchValue = getValueByString("phone number");
+      filterEmployeesByPhoneNumber(employeesArray, filteredEmployeesArray, searchValue);
+      break;
+    }
+    case 8: {
+      string searchValue = getValueByString("date of birth");
+      filterEmployeesByDateOfBirth(employeesArray, filteredEmployeesArray, searchValue);
+      break;
+    }
     case 9: {
       bool searchValue = getValueByBoolean("employee status");
-      // filterEmployeesByIsAnEmployee(employeesArray, filteredEmployeesArray, searchValue);
+      filterEmployeesByIsAnEmployee(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
 
