@@ -62,7 +62,7 @@ Hence, a dynamic array using C++ vectors has been implemented.
 
 ## Problems and Possible Further Improvements
 ### 1. Employee Attributes
-Our implementation of the `Employee` class can be greatly improved. Currently, the number of attributes is fixed at 10, and there is no way that the program user is allowed to create more attributes. In our view, one of the ways to dynamically manage attributes is by using a `struct` to store each attributes. The proposed implementation is as follows:
+Our implementation of the `Employee` class can be greatly improved. Currently, the number of attributes is fixed at 10, and there is no way that the program user is allowed to create more attributes. In our view, one of the ways to dynamically manage attributes is by using a `struct` to store each attribute. The proposed implementation is as follows:
 ```
 struct Attribute {
   string key; // attribute name such as "First Name"
@@ -70,6 +70,7 @@ struct Attribute {
   string value; // attribute value such as "Janvi"
 }
 ```
+Then, the `Employee` class will store a vector of `Attributes`, and it will also contain setter and getter functions.
 
 ### 2. Handle User Input
 To a certain degree, user inputs are being processed before they influence the program flow. For example, when the user is asked to enter a salary (data type double), the module `handle_user_input` would check if the input can be converted into a double; otherwise, the user will be prompted for a valid input. However, as our `Employee` class implementation is rather rigid, it has been quite difficult to call these functions in a more DRY way, so we eneded up with a lot of WET code.
