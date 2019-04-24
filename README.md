@@ -59,4 +59,21 @@ Hence, a dynamic array using C++ vectors has been implemented.
 
 ## Using the Program
 
-### Possible Further Improvements
+
+## Problems and Possible Further Improvements
+### 1. Employee Attributes
+Our implementation of the `Employee` class can be greatly improved. Currently, the number of attributes is fixed at 10, and there is no way that the program user is allowed to create more attributes. In our view, one of the ways to dynamically manage attributes is by using a `struct` to store each attributes. The proposed implementation is as follows:
+```
+struct Attribute {
+  string key; // attribute name such as "First Name"
+  string type; // attribute type such as "string"
+  string value; // attribute value such as "Janvi"
+}
+```
+
+### 2. Handle User Input
+To a certain degree, user inputs are being processed before they influence the program flow. For example, when the user is asked to enter a salary (data type double), the module `handle_user_input` would check if the input can be converted into a double; otherwise, the user will be prompted for a valid input. However, as our `Employee` class implementation is rather rigid, it has been quite difficult to call these functions in a more DRY way, so we eneded up with a lot of WET code.
+
+One of the more acute problems is our handling of user input while creating a new employee (`createNewEmployee` in `navigation`). When asking the user for the new employee's attributes, inputs are being taken using `getline(cin, attribute)`, and converted directly to `string`, `int`, `double` and `boolean` type without any program fallbacks. In other words, if the user enters something that cannot be converted to a double for the `salary` attribute, the program will crash.
+
+Therefore, the first thing to do is to solve **Problem 1**, and use the greatly improved `Employee` class to handle user input.

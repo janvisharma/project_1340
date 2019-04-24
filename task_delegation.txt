@@ -1,13 +1,19 @@
 Janvi
-- complete user interface
+- complete user interface - done
+17 April
 
 - setAllAttributes in Employee class method - done
+17 April
 
-- create
+- compare and filter functions in array manipulation - done
+25 April
 
-- update
+- create new employee - done
+25 April
 
-- delete
+- list all employees
+
+- update an employee
 
 - fire employee
 
