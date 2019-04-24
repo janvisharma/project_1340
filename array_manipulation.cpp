@@ -1,8 +1,9 @@
+#include "array_manipulation.h"
+#include "employee_class.h"
+#include "handle_user_input.h"
 #include <iostream>
 #include <string>
 #include <vector>
-#include "employee_class.h"
-#include "handle_user_input.h"
 
 using namespace std;
 
