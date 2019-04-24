@@ -39,7 +39,7 @@ int main() {
   fin.close();
 
   // menu-based navigation
-  int userChoice = 1;
+  int userChoice;
 
   while (true) {
     cout << "-----------------------------------------------------" << endl;
@@ -57,7 +57,9 @@ int main() {
     cout << "-----------------------------------------------------" << endl;
 
     cout << "Please enter number:\t";
-    cin >> userChoice;
+
+    // prompt for user input
+    userChoice = getValueByInteger("choice");
 
     switch (userChoice) {
       // all cases will call a corresponding function from navigation.h
@@ -69,7 +71,7 @@ int main() {
 
       case 1:
         {
-          cout << 1 << endl;
+          createNewEmployee(employeesArray);
           break;
         }
 
