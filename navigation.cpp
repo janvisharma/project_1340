@@ -12,18 +12,6 @@
 
 using namespace std;
 
-int listEmployeeAttributes() {
-  // create placeholder employee to get attributesHeader data
-  Employee thisEmployee;
-  string * attributesHeader = thisEmployee.getAttributesHeader();
-
-  cout << "List of available employee attributes" << endl;
-  for (int i = 0; i < thisEmployee.getNumberOfEmployeeAttributes(); i++) {
-    cout << i << ": " << attributesHeader[i] << endl;
-  }
-
-  return thisEmployee.getNumberOfEmployeeAttributes();
-}
 
 // User choice = 0, exit program
 void exitProgram(string filename, vector <Employee> employeesArray) {
@@ -42,7 +30,19 @@ void searchEmployees(vector <Employee> employeesArray) {
   cout << "*****************************************************" << endl;
 
   // list all available attributes
-  int numberOfEmployeeAttributes = listEmployeeAttributes();
+  cout << "List of available employee attributes for searching:" << endl;
+  cout << "List of available employee attributes for sorting:" << endl;
+  cout << "1: First Name" << endl;
+  cout << "2: Last Name" << endl;
+  cout << "3: Last Name" << endl;
+  cout << "4: Age" << endl;
+  cout << "5: Role" << endl;
+  cout << "6: Salary" << endl;
+  cout << "7: Phone Number" << endl;
+  cout << "8: Date of Birth" << endl;
+  cout << "9: Employee Status" << endl;
+
+  int numberOfEmployeeAttributes = 9;
 
   // prompt for selection of 1 attribute
   string userPrompt = "Please select 1 attribute as search criteria: ";
@@ -56,18 +56,18 @@ void searchEmployees(vector <Employee> employeesArray) {
   // search by using switch, prompt for searchValue
   vector <Employee> filteredEmployeesArray;
   switch (attributeInteger) {
-    case 0: {
+    case 1: {
       string searchValue = getValueByString("first name");
       filterEmployeesByFirstName(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
-    case 1: {
+    case 2: {
       string searchValue = getValueByString("last name");
       filterEmployeesByLastName(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
 
-    case 5: {
+    case 6: {
       double searchValue = getValueByDouble("salary");
       // filterEmployeesBySalary(employeesArray, filteredEmployeesArray, searchValue);
       break;
@@ -78,6 +78,8 @@ void searchEmployees(vector <Employee> employeesArray) {
       // filterEmployeesByIsAnEmployee(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
+
+    // default case not required (user input handled properly)
   }
 
   // print filtered employees array
@@ -99,7 +101,17 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   cout << "*****************************************************" << endl;
 
   // list all available attributes
-  int numberOfEmployeeAttributes = listEmployeeAttributes();
+  cout << "List of available employee attributes for sorting:" << endl;
+  cout << "1: First Name" << endl;
+  cout << "2: Last Name" << endl;
+  cout << "3: Last Name" << endl;
+  cout << "4: Age" << endl;
+  cout << "5: Role" << endl;
+  cout << "6: Salary" << endl;
+  cout << "7: Phone Number" << endl;
+  cout << "8: Employee Status" << endl;
+
+  int numberOfEmployeeAttributes = 8;
 
   // prompt for selection of attributes
   string orderLine;
@@ -152,19 +164,19 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   for (int i = 0; i < order.size(); i++) {
     // handle each attribute using a switch
     switch (order[i]) {
-      case 0: {
+      case 1: {
         sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByFirstName);
         break;
       }
-      case 1: {
+      case 2: {
         sort(employeesArray.begin(), employeesArray.end(), compareEmployeesByLastName);
         break;
       }
 
-
+      // default case not required (user input handled properly)
     }
   }
 
-  cout << "Sorting completed." << endl;
+  cout << "Sorting completed.\n" << endl;
   cout << "*****************************************************" << endl;
 }

@@ -48,7 +48,7 @@ bool checkAndConvertToInteger(int & valueInteger, string valueString) {
 // special function for selecting employee attributes for seaching and sorting
 bool checkAndConvertToIntegerForEmployeeAttributes(int & attributeInteger, string attributeSubstring, int numberOfEmployeeAttributes) {
   bool isInteger = checkAndConvertToInteger(attributeInteger, attributeSubstring);
-  return isInteger && 0 <= attributeInteger && attributeInteger < numberOfEmployeeAttributes;
+  return isInteger && 1 <= attributeInteger && attributeInteger <= numberOfEmployeeAttributes;
 }
 
 bool checkAndConvertToDouble(double & valueDouble, string valueString) {
