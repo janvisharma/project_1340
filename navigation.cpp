@@ -103,12 +103,12 @@ void searchEmployees(vector <Employee> employeesArray) {
   vector <Employee> filteredEmployeesArray;
   switch (attributeInteger) {
     case 1: {
-      string searchValue = getValueByString("first name");
+      string searchValue = getValueByLongString("first name");
       filterEmployeesByFirstName(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
     case 2: {
-      string searchValue = getValueByString("last name");
+      string searchValue = getValueByLongString("last name");
       filterEmployeesByLastName(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
@@ -123,7 +123,7 @@ void searchEmployees(vector <Employee> employeesArray) {
       break;
     }
     case 5: {
-      string searchValue = getValueByString("role");
+      string searchValue = getValueByLongString("role");
       filterEmployeesByRole(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
@@ -138,12 +138,12 @@ void searchEmployees(vector <Employee> employeesArray) {
       break;
     }
     case 8: {
-      string searchValue = getValueByString("date of birth");
+      string searchValue = getValueByLongString("date of birth (Do Month YYYY)");
       filterEmployeesByDateOfBirth(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
     case 9: {
-      bool searchValue = getValueByBoolean("employee status");
+      bool searchValue = getValueByBoolean("employee status (true / false)");
       filterEmployeesByIsAnEmployee(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }

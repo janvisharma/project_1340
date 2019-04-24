@@ -118,6 +118,16 @@ string getValueByString(string attribute) {
   return valueString;
 }
 
+string getValueByLongString(string attribute) {
+  string userPrompt = "Please input " + attribute + ": ";
+  string valueString = handleUserInputLine(userPrompt);
+  while (valueString.length() == 0) {
+    userPrompt = "Please input valid " + attribute + ": ";
+    valueString = handleUserInputLine(userPrompt);
+  }
+  return valueString;
+}
+
 int getValueByInteger(string attribute) {
   int valueInteger;
   string userPrompt = "Please input " + attribute + ": ";

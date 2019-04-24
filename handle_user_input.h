@@ -13,6 +13,8 @@ string getValueFromStringStream(string);
 
 string getValueByString(string);
 
+string getValueByLongString(string);
+
 int getValueByInteger(string);
 
 double getValueByDouble(string);
