@@ -56,8 +56,6 @@ int main() {
 
     cout << "-----------------------------------------------------" << endl;
 
-    cout << "Please enter number:\t";
-
     // prompt for user input
     userChoice = getValueByInteger("choice");
 

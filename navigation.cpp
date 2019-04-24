@@ -25,9 +25,55 @@ void exitProgram(string filename, vector <Employee> employeesArray) {
   exit(1);
 }
 
+void createNewEmployee(vector <Employee> & employeesArray)
+{
+  cout << "*****************************************************" << endl;
+
+  Employee newEmployee;
+  cout << "Creating a new employee. You will be prompted " << newEmployee.getNumberOfEmployeeAttributes() << " attributes." << endl;
+
+  string attributes[10];
+  vector <string> attributesPrompt = {"First Name", "Last Name", "Employee ID", "Age", "Role", "Salary", "Address", "Phone Number", "Date of Birth (Do Month YYYY)", "Employee Status (True / False)"};
+
+  string userPrompt;
+
+  // first prompt
+  for (int i = 0; i < attributesPrompt.size(); i++) {
+    userPrompt = to_string(i) + ". Enter " + attributesPrompt[i] + ": ";
+    attributes[i] = handleUserInputLine(userPrompt);
+  }
+
+  // prompt for any change before putting into employees array
+  bool userConfirmation = false;
+  int attributeInteger;
+  while (!userConfirmation) {
+    cout << "Any information to be changed before creating employee record? Select between 0 to 9 as previously asked.\nEnter -1 to confirm employee record entered, -2 to cancel creation, and go back to main program." << endl;
+    cout << "Enter: ";
+    cin >> attributeInteger;
+    if (attributeInteger == -1) {
+      userConfirmation = true;
+      break;
+    }
+    if (attributeInteger == -2) {
+      return;
+    }
+    userPrompt = to_string(attributeInteger) + ". Enter " + attributesPrompt[attributeInteger] + ": ";
+    attributes[attributeInteger] = handleUserInputLine(userPrompt);
+    cout << "Attribute changed." << endl;
+  }
+
+  // set all attributes and put into employees array
+  newEmployee.setAllAttributes(attributes);
+  employeesArray.push_back(newEmployee);
+
+  cout << "New employee with first name: " << newEmployee.getFirstName() << " has been created." << endl;
+
+  cout << "*****************************************************" << endl;
+}
+
 // User choice = 2, search employee records
 void searchEmployees(vector <Employee> employeesArray) {
-  cout << "*****************************************************" << endl;
+  cout  <<  "*****************************************************" << endl ;
 
   // list all available attributes
   cout << "List of available employee attributes for searching:" << endl;
