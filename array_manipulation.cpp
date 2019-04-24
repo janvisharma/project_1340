@@ -21,7 +21,7 @@ bool compareEmployeesByEmployeeId(Employee employeeA, Employee employeeB) {
 }
 
 bool compareEmployeesByAge(Employee employeeA, Employee employeeB) {
-  return employeeA.getAge() <= employeesB.getAge();
+  return employeeA.getAge() <= employeeB.getAge();
 }
 
 bool compareEmployeesByRole(Employee employeeA, Employee employeeB) {
@@ -43,7 +43,7 @@ bool compareEmployeesByIsAnEmployee(Employee employeeA, Employee employeeB) {
     tempA = 1;
   }
   else {tempA = 0;}
-  if(employeesB.getIsAnEmployee())
+  if(employeeB.getIsAnEmployee())
   {
     tempB = 1;
   }
@@ -94,7 +94,7 @@ void filterEmployeesByAge(vector <Employee> employeesArray, vector <Employee> & 
 
   for (int i = 0; i < employeesArray.size(); i++) {
     int thisEmployeeAge = employeesArray[i].getAge();
-    if (thisEmployeeFirstName == searchValue) {
+    if (thisEmployeeAge == searchValue) {
       filteredEmployeesArray.push_back(employeesArray[i]);
     }
   }
