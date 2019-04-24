@@ -47,7 +47,7 @@ void createNewEmployee(vector <Employee> & employeesArray)
   bool userConfirmation = false;
   int attributeInteger;
   while (!userConfirmation) {
-    cout << "Any information to be changed before creating employee record? Select between 0 to 9 as previously asked.\nEnter -1 to confirm employee record entered, -2 to cancel creation, and go back to main program." << endl;
+    cout << "\nAny information to be changed before creating employee record? Select between 0 to 9 as previously asked.\nEnter -1 to confirm employee record entered, -2 to cancel creation, and go back to main program.\n" << endl;
     cout << "Enter: ";
     cin >> attributeInteger;
     if (attributeInteger == -1) {

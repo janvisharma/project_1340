@@ -1,4 +1,5 @@
 #include "employee_class.h"
+#include "handle_user_input.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -48,7 +49,7 @@ void Employee::setDateOfBirth(string input) {
 }
 
 void Employee::setIsAnEmployee(string input) {
-  transform(input.begin(), input.end(), input.begin(), ::tolower);
+  convertStringToLower(input);
   isAnEmployee = input == "true";
 }
 

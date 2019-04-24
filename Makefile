@@ -6,7 +6,7 @@ main: $(Objects)
 main.o: main.cpp employee_class.h file_manipulation.h navigation.h array_manipulation.h handle_user_input.h
 	g++ -pedantic-errors -std=c++11 -c $<
 
-employee_class.o: employee_class.cpp employee_class.h
+employee_class.o: employee_class.cpp employee_class.h handle_user_input.h
 	g++ -pedantic-errors -std=c++11 -c $<
 
 file_manipulation.o: file_manipulation.cpp file_manipulation.h employee_class.h
