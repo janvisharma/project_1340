@@ -58,7 +58,91 @@ We have considered using either dynamic arrays (C++ vector library) or linked li
 Hence, a dynamic array using C++ vectors has been implemented.
 
 ## Using the Program
+### File I/O
+When the program user runs the `main` program, he / she is first asked to either create a new employee data record file, or load an existing file. The file format must be `.txt`, and it has to conform to the following rules:
+1. Header line
+```
+First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status |
+```
+1. Data line
+Example:
+```
+Jon | Snow | 1010101010 | 22 | Rightful King of 7 Kingdoms | 9999999 | Winterfell | No number | 283 AC | True |
+```
 
+When the user loads an existing file, the employee records is read, and a vector of Employee's is created using `vector <Employee> employeesArray` (we have kept the vector name consistent throughout our program). Functions such as searching and sorting are done using `employeesArray`.
+
+When the user exits the program, the file loaded at the start is be overwritten using the `employeeArray` at the end of program run time. Essentially, each `Employee`'s data is recorded in the file using the aforementioned rules.
+
+### Navigating the Menu
+Our program contains the following features in a menu-based navigation:
+```
+0: Exit the program, and record changes to your employee data in the file you loaded.
+1: Create a new employee record.
+2: Search employees.
+3: Display list of employees.
+4: Sort employee records.
+5: Modify record of an employee.
+6: Fire an employee.
+```
+
+#### Exit the program
+```
+0: Exit the program, and record changes to your employee data in the file you loaded.
+```
+The user exits the program, and an output filestream is invoked to store `employeesArray` data into the file.
+
+#### Create a new employee
+```
+1: Create a new employee record.
+```
+The user is prompted a series of employee attributes such as first name, last name, etc to create a new employee. Furthermore, our program asks the user for  necessary modifications (just in case he / she has typed incorrect values) before letting the user confirm the employee creation.
+
+#### Search employees
+```
+2: Search employees.
+```
+The user is asked to search for employees based on the selection of 1 employee attribute. However, the `address` attribute is disabled because it is to our knowledge that searching based on long string values such as `address` is not meaningful. The allowed employee attributes are as follows:
+```
+1: First Name
+2: Last Name
+3: Employee ID
+4: Age
+5: Role
+6: Salary
+7: Phone Number
+8: Date of Birth
+9: Employee Status
+```
+`employeesArray` is filtered based on the attribute selected, and the data of the employees found is displayed sparingly.
+
+#### Display list of employees
+```
+3: Display list of employees.
+```
+A list of employees is displayed, but with 5 attributes only; the attributes include `First Name`, `Last Name`, `Employee ID`, `Salary`, and `Employee Status`. An index for each employee is also provided at the beginning of each `cout` line. The user is then given an option to go back to the navigation menu, or look further into a specific employee. If the user chooses the latter, an employee index is prompted, and the complete record of the relevant employee is displayed.
+
+#### Sort employee records
+```
+4: Sort employee records.
+```
+A list of attributes is shown to let the user choose some based on a decreasing order of sorting importance. `employeesArray` is sorted based on that order.
+
+#### Modify record of an employee
+```
+5: Modify record of an employee.
+```
+A list of employees is shown *(the same function in __feature #3__ is used here)*. An index of the employee that the user wants to modify is asked. Then, a list of all employee attributes is displayed; subsequently, the user is asked to select 1 attribute, and enter a new value for that attribute. The user is then asked to confirm the changes, or make further changes to that employee. Afterwards, the user is asked whether to modify other employee records; if yes, the above process is repeated, otherwise, the program flows back to the navigation menu.
+
+#### Fire an employee
+```
+6: Fire an employee.
+```
+Technically, we could have asked the user to simply use **feature #5** to modify an employee's `Employee Status` attribute to `False`. However, we want to provide a faster way for the user to modify that attribute quickly without having to go through the process of choosing it.
+
+A list of employees is shown. The user is asked to input a line that contains the index of the employees to be fired. Then, the user is also asked to make confirmation.
+
+**Firing an employee is not equivalent to completely removing the entire employee record, instead it updates the `Employee Status` attribute to `False`.**
 
 ## Problems and Possible Further Improvements
 ### 1. Employee Attributes
