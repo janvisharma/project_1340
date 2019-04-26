@@ -85,7 +85,7 @@ void writeEmployeeDataFile(ofstream & fout, vector <Employee> employeesArray) {
     fout << thisEmployee.getEmployeeId() << delimiter;
     fout << thisEmployee.getAge() << delimiter;
     fout << thisEmployee.getRole() << delimiter;
-    fout << fixed << setprecision(0) << thisEmployee.getSalary() << delimiter;
+    fout << fixed << setprecision(2) << thisEmployee.getSalary() << delimiter;
     fout << thisEmployee.getAddress() << delimiter;
     fout << thisEmployee.getPhoneNumber() << delimiter;
     fout << thisEmployee.getDateOfBirth() << delimiter;

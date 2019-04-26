@@ -13,3 +13,5 @@ void displayEmployees(vector <Employee>);
 void sortEmployeesArray(vector <Employee> &);
 
 void searchEmployees(vector <Employee>);
+
+void modifyEmployeeArray(vector <Employee> &); 
