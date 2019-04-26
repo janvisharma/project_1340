@@ -376,3 +376,102 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   cout << "Sorting completed.\n" << endl;
   cout << "*****************************************************" << endl;
 }
+
+// User choice = 5, Modify employee records
+void modifyEmployeeArray(vector <Employee> & employeesArray){
+  showEmployeeList(employeesArray);
+  int index;
+  cout << "Enter index of employee record you wish to modify: ";
+  cin >> index;
+  Employee thisEmployee;
+  thisEmployee = employeesArray[index-1];
+
+  // list all available attributes
+  cout << "List of available employee attributes for modifying:" << endl;
+  cout << "1: First Name" << endl;
+  cout << "2: Last Name" << endl;
+  cout << "3: Employee ID" << endl;
+  cout << "4: Age" << endl;
+  cout << "5: Role" << endl;
+  cout << "6: Salary" << endl;
+  cout << "7. Address" << endl;
+  cout << "8: Phone Number" << endl;
+
+  int attributeIndex;
+  cout << "Enter index of attribute you want to change: " << endl;
+  cin >> attributeIndex;
+
+  switch(attributeIndex){
+    case 1:
+    {
+      string firstName = getValueByLongString("first name");
+      thisEmployee.setFirstName(firstName);
+      break;
+    }
+    case 2:
+    {
+      string lastName;
+      cout<<"Enter Last Name: ";
+      cin>>lastName;
+      thisEmployee.setLastName(lastName);
+      break;
+    }
+    case 3:
+    {
+      string employeeId;
+      cout<<"Enter Employee ID: ";
+      cin>>employeeId;
+      thisEmployee.setEmployeeId(employeeId);
+      break;
+    }
+    case 4:
+    {
+      string age;
+      cout<<"Enter Age: ";
+      cin>>age;
+      thisEmployee.setAge(age);
+      break;
+    }
+    case 5:
+    {
+      string role;
+      cout<<"Enter Role: ";
+      cin>>role;
+      thisEmployee.setRole(role);
+      break;
+    }
+    case 6:
+    {
+      string salary;
+      cout<<"Enter Salary: ";
+      cin>>salary;
+      thisEmployee.setSalary(salary);
+      break;
+    }
+    case 7:
+    {
+      string address;
+      cout<<"Enter Address: ";
+      cin>>address;
+      thisEmployee.setAddress(address);
+      break;
+    }
+    case 8:
+    {
+      string phoneNumber;
+      cout<<"Enter Phone Number: ";
+      cin>>phoneNumber;
+      thisEmployee.setPhoneNumber(phoneNumber);
+      break;
+    }
+  }
+
+  // prompt user for confirmation
+
+  // store thisEmployee into array
+  employeesArray[index - 1] = thisEmployee;
+
+  cout << "The employee list after modifying is: " << endl;
+  showEmployeeList(employeesArray);
+
+}

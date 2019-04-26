@@ -90,6 +90,10 @@ int main() {
           sortEmployeesArray(employeesArray);
           break;
         }
+      case 5:
+        {
+          modifyEmployeeArray(employeesArray);
+        }
 
       default:
         {
