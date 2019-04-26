@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -6,8 +7,8 @@ void convertStringToLower(string &);
 
 string handleUserInputLine(string);
 
-// special function for selecting employee attributes for seaching and sorting
-bool checkAndConvertToIntegerForEmployeeAttributes(int &, string, int);
+
+bool checkAndConvertToIntegerWithIndexLimit(int &, string, int);
 
 string getValueFromStringStream(string);
 
@@ -20,3 +21,5 @@ int getValueByInteger(string);
 double getValueByDouble(string);
 
 bool getValueByBoolean(string);
+
+vector <int> getIndices(string, string, int);

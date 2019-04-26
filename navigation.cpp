@@ -146,7 +146,6 @@ void searchEmployees(vector <Employee> employeesArray) {
 
   // list all available attributes
   cout << "List of available employee attributes for searching:" << endl;
-  cout << "List of available employee attributes for sorting:" << endl;
   cout << "1: First Name" << endl;
   cout << "2: Last Name" << endl;
   cout << "3: Employee ID" << endl;
@@ -163,7 +162,7 @@ void searchEmployees(vector <Employee> employeesArray) {
   string userPrompt = "Please select 1 attribute as search criteria: ";
   string attributeString = getValueFromStringStream(userPrompt);
   int attributeInteger;
-  while (!checkAndConvertToIntegerForEmployeeAttributes(attributeInteger, attributeString, numberOfEmployeeAttributes)) {
+  while (!checkAndConvertToIntegerWithIndexLimit(attributeInteger, attributeString, numberOfEmployeeAttributes)) {
     userPrompt = "Invalid attribute selected. Please input again: ";
     attributeString = getValueFromStringStream(userPrompt);
   }
@@ -286,51 +285,8 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   int numberOfEmployeeAttributes = 8;
 
   // prompt for selection of attributes
-  string orderLine;
   string userPrompt = "Please select attributes to sort accordingly. More than 1 attribute can be selected. Simply order by decreasing importance, separated by a space. Order: ";
-  orderLine = handleUserInputLine(userPrompt);
-  // split orderLine data into vector of integers, also check if all integers are within numberOfEmployeeAttributes boundary
-  vector <int> order;
-  bool isValid = false;
-  while (!isValid) {
-    orderLine += " ";
-    while(orderLine.length() != 0) {
-      // get substring by removinng spaces
-      string attributeSubstring = "";
-      for (int i = 0; i < orderLine.length(); i++) {
-        if (!isspace(orderLine[i])) {
-          attributeSubstring += orderLine[i];
-        } else {
-          break;
-        }
-      }
-
-      // check if substring is a number that is less than numberOfEmployeeAttributes
-      int attributeInteger;
-      isValid = checkAndConvertToIntegerForEmployeeAttributes(attributeInteger, attributeSubstring, numberOfEmployeeAttributes);
-
-      if (!isValid) {
-        vector<int>().swap(order);
-        break;
-      }
-
-      // put into order vector
-      order.push_back(attributeInteger);
-
-      // erase substring and subsequent spaces in orderLine
-      orderLine.erase(0, attributeSubstring.length());
-      while (orderLine.length() != 0 && isspace(orderLine[0])) {
-        orderLine.erase(0, 1);
-      }
-    }
-
-    // break isValid while loop if orderLine was exhausted properly and order size is less than numberOfEmployeeAttributes
-    if (isValid && order.size() < numberOfEmployeeAttributes) {
-      break;
-    }
-    userPrompt = "Invalid attributes order. Please input again: ";
-    orderLine = handleUserInputLine(userPrompt);
-  }
+  vector <int> order = getIndices(userPrompt, "attributes order", numberOfEmployeeAttributes);
 
   // sort according to order
   for (int i = order.size() - 1; i >= 0; i--) {

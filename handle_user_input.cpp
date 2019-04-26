@@ -45,10 +45,10 @@ bool checkAndConvertToInteger(int & valueInteger, string valueString) {
   return true;
 }
 
-// special function for selecting employee attributes for seaching and sorting
-bool checkAndConvertToIntegerForEmployeeAttributes(int & attributeInteger, string attributeSubstring, int numberOfEmployeeAttributes) {
-  bool isInteger = checkAndConvertToInteger(attributeInteger, attributeSubstring);
-  return isInteger && 1 <= attributeInteger && attributeInteger <= numberOfEmployeeAttributes;
+// special function to convert integer, but check if integer is less than index limit
+bool checkAndConvertToIntegerWithIndexLimit(int & valueInteger, string substring, int indexLimit) {
+  bool isInteger = checkAndConvertToInteger(valueInteger, substring);
+  return isInteger && 1 <= valueInteger && valueInteger <= indexLimit;
 }
 
 bool checkAndConvertToDouble(double & valueDouble, string valueString) {
@@ -159,4 +159,52 @@ bool getValueByBoolean(string attribute) {
     valueString = getValueFromStringStream(userPrompt);
   }
   return valueBoolean;
+}
+
+vector <int> getIndices(string userPrompt, string purpose, int indexLimit) {
+  string inputLine = handleUserInputLine(userPrompt);
+  // split inputLine data into vector of integers, also check if all integers are within numberOfEmployeeAttributes boundary
+  vector <int> indices;
+  bool isValid = false;
+  while (!isValid) {
+    inputLine += " ";
+    while(inputLine.length() != 0) {
+      // get substring by removinng spaces
+      string subString = "";
+      for (int i = 0; i < inputLine.length(); i++) {
+        if (!isspace(inputLine[i])) {
+          subString += inputLine[i];
+        } else {
+          break;
+        }
+      }
+
+      // check if substring is a number that is less than indexLimit
+      int valueInteger;
+      isValid = checkAndConvertToIntegerWithIndexLimit(valueInteger, subString, indexLimit);
+
+      if (!isValid) {
+        vector<int>().swap(indices);
+        break;
+      }
+
+      // put into indices vector
+      indices.push_back(valueInteger);
+
+      // erase substring and subsequent spaces in inputLine
+      inputLine.erase(0, subString.length());
+      while (inputLine.length() != 0 && isspace(inputLine[0])) {
+        inputLine.erase(0, 1);
+      }
+    }
+
+    // break isValid while loop if inputLine was exhausted properly and indices size is less than numberOfEmployeeAttributes
+    if (isValid && indices.size() <= indexLimit) {
+      break;
+    }
+    userPrompt = "Invalid " + purpose + ". Please input again: ";
+    inputLine = handleUserInputLine(userPrompt);
+  }
+
+  return indices;
 }
