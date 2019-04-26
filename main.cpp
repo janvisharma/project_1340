@@ -93,11 +93,13 @@ int main() {
       case 5:
         {
           modifyEmployeeArray(employeesArray);
+          break;
         }
 
       default:
         {
           cout << "\nPlease enter a valid number from the options given." << endl;
+          break;
         }
     }
   }

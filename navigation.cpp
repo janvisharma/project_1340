@@ -342,10 +342,16 @@ void modifyEmployeeArray(vector <Employee> & employeesArray){
 
   showEmployeeList(employeesArray);
 
-  Employee thisEmployee;
   string userPrompt = "Enter index of employee record you wish to modify: ";
-  int index = getValueByInteger(userPrompt);
-  thisEmployee = employeesArray[index-1];
+  string indexString = getValueFromStringStream(userPrompt);
+  int index;
+  while (!checkAndConvertToIntegerWithIndexLimit(index, indexString, employeesArray.size())) {
+    userPrompt = "Invalid index selected. Please input again: ";
+    indexString = getValueFromStringStream(userPrompt);
+  }
+
+  Employee thisEmployee;
+  thisEmployee = employeesArray[index - 1];
 
   // list all available attributes
   cout << "List of available employee attributes for modifying:" << endl;
@@ -359,9 +365,15 @@ void modifyEmployeeArray(vector <Employee> & employeesArray){
   cout << "8: Phone Number" << endl;
   cout << "9: Date of Birth" << endl;
 
+  int numberOfEmployeeAttributes = 9;
+
+  userPrompt = "Please select 1 attribute as to modify: ";
+  string attributeString = getValueFromStringStream(userPrompt);
   int attributeIndex;
-  cout << "Enter index of attribute you want to change: " << endl;
-  cin >> attributeIndex;
+  while (!checkAndConvertToIntegerWithIndexLimit(attributeIndex, attributeString, numberOfEmployeeAttributes)) {
+    userPrompt = "Invalid attribute selected. Please input again: ";
+    attributeString = getValueFromStringStream(userPrompt);
+  }
 
   switch(attributeIndex){
     case 1:
@@ -421,10 +433,10 @@ void modifyEmployeeArray(vector <Employee> & employeesArray){
   }
 
   // show modified employee (full record)
-  cout << "Modified employee record:" << endl;
+  cout << "\nModified employee record:" << endl;
   showSpecificEmployee(thisEmployee);
   // prompt user for confirmation
-  cout<<"Are you sure you wish to continue?" << endl;
+  cout<<"\nAre you sure you wish to continue?" << endl;
   string response = getValueByString("(y/n)");
 
   if(response == "y" || response == "Y")
