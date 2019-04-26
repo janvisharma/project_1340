@@ -78,6 +78,20 @@ void showEmployeeList(vector <Employee> employeesArray) {
   }
 }
 
+void showSpecificEmployee(Employee employee) {
+  cout << "First Name: " << employee.getFirstName() << endl;
+  cout << "Last Name: " << employee.getLastName() << endl;
+  cout << "Employee ID: " << employee.getEmployeeId() << endl;
+  cout << "Age: " << employee.getAge() << endl;
+  cout << "Role: " << employee.getRole() << endl;
+  cout << "Salary: " << employee.getSalary() << endl;
+  cout << "Address: " << employee.getAddress() << endl;
+  cout << "Phone Number: " << employee.getPhoneNumber() << endl;
+  cout << "Date of Birth: " << employee.getDateOfBirth() << endl;
+  string empStatus = employee.getIsAnEmployee() ? "True" : "False";
+  cout << "Employee Status: " << empStatus << endl;
+}
+
 
 // User choice = 0, exit program
 void exitProgram(string filename, vector <Employee> employeesArray) {
@@ -182,7 +196,7 @@ void searchEmployees(vector <Employee> employeesArray) {
       break;
     }
     case 3: {
-      string searchValue = getValueByString("employee id");
+      string searchValue = getValueByLongString("employee id");
       filterEmployeesByEmployeeId(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
@@ -202,7 +216,7 @@ void searchEmployees(vector <Employee> employeesArray) {
       break;
     }
     case 7: {
-      string searchValue = getValueByString("phone number");
+      string searchValue = getValueByLongString("phone number");
       filterEmployeesByPhoneNumber(employeesArray, filteredEmployeesArray, searchValue);
       break;
     }
@@ -248,18 +262,7 @@ void displayEmployees(vector <Employee> employeesArray){
     while (index < 1 || index > employeesArray.size()) {
       index = getValueByInteger("Index between 1 and " + to_string(employeesArray.size()));
     }
-    Employee thisEmployee = employeesArray[index - 1];
-    cout << "First Name: " << thisEmployee.getFirstName() << endl;
-    cout << "Last Name: " << thisEmployee.getLastName() << endl;
-    cout << "Employee ID: " << thisEmployee.getEmployeeId() << endl;
-    cout << "Age: " << thisEmployee.getAge() << endl;
-    cout << "Role: " << thisEmployee.getRole() << endl;
-    cout << "Salary: " << thisEmployee.getSalary() << endl;
-    cout << "Address: " << thisEmployee.getAddress() << endl;
-    cout << "Phone Number: " << thisEmployee.getPhoneNumber() << endl;
-    cout << "Date of Birth: " << thisEmployee.getDateOfBirth() << endl;
-    string empStatus = thisEmployee.getIsAnEmployee() ? "True" : "False";
-    cout << "Employee Status: " << empStatus << endl;
+    showSpecificEmployee(employeesArray[index - 1]);
   }
   cout << endl;
 
@@ -379,11 +382,13 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
 
 // User choice = 5, Modify employee records
 void modifyEmployeeArray(vector <Employee> & employeesArray){
+  cout << "*****************************************************" << endl;
+
   showEmployeeList(employeesArray);
-  int index;
-  cout << "Enter index of employee record you wish to modify: ";
-  cin >> index;
+
   Employee thisEmployee;
+  string userPrompt = "Enter index of employee record you wish to modify: ";
+  int index = getValueByInteger(userPrompt);
   thisEmployee = employeesArray[index-1];
 
   // list all available attributes
@@ -396,6 +401,7 @@ void modifyEmployeeArray(vector <Employee> & employeesArray){
   cout << "6: Salary" << endl;
   cout << "7. Address" << endl;
   cout << "8: Phone Number" << endl;
+  cout << "9: Date of Birth" << endl;
 
   int attributeIndex;
   cout << "Enter index of attribute you want to change: " << endl;
@@ -410,68 +416,66 @@ void modifyEmployeeArray(vector <Employee> & employeesArray){
     }
     case 2:
     {
-      string lastName;
-      cout<<"Enter Last Name: ";
-      cin>>lastName;
+      string lastName = getValueByLongString("last name");
       thisEmployee.setLastName(lastName);
       break;
     }
     case 3:
     {
-      string employeeId;
-      cout<<"Enter Employee ID: ";
-      cin>>employeeId;
+      string employeeId = getValueByLongString("employee id");
       thisEmployee.setEmployeeId(employeeId);
       break;
     }
     case 4:
     {
-      string age;
-      cout<<"Enter Age: ";
-      cin>>age;
-      thisEmployee.setAge(age);
+      int age = getValueByInteger("age");
+      thisEmployee.setAge(to_string(age));
       break;
     }
     case 5:
     {
-      string role;
-      cout<<"Enter Role: ";
-      cin>>role;
+      string role = getValueByLongString("role");
       thisEmployee.setRole(role);
       break;
     }
     case 6:
     {
-      string salary;
-      cout<<"Enter Salary: ";
-      cin>>salary;
-      thisEmployee.setSalary(salary);
+      double salary = getValueByDouble("salary");
+      thisEmployee.setSalary(to_string(salary));
       break;
     }
     case 7:
     {
-      string address;
-      cout<<"Enter Address: ";
-      cin>>address;
+      string address = getValueByLongString("address");
       thisEmployee.setAddress(address);
       break;
     }
     case 8:
     {
-      string phoneNumber;
-      cout<<"Enter Phone Number: ";
-      cin>>phoneNumber;
+      string phoneNumber = getValueByLongString("phone number");
       thisEmployee.setPhoneNumber(phoneNumber);
+      break;
+    }
+    case 9:
+    {
+      string dateOfBirth = getValueByLongString("date of birth (Do Month YYYY)");
+      thisEmployee.setDateOfBirth(dateOfBirth);
       break;
     }
   }
 
+  // show modified employee (full record)
+  cout << "Modified employee record:" << endl;
+  showSpecificEmployee(thisEmployee);
   // prompt user for confirmation
+  cout<<"Are you sure you wish to continue?" << endl;
+  string response = getValueByString("(y/n)");
 
-  // store thisEmployee into array
-  employeesArray[index - 1] = thisEmployee;
+  if(response == "y" || response == "Y")
+  {
+    // store thisEmployee into array
+    employeesArray[index - 1] = thisEmployee;
+  }
 
-  cout << "The employee list after modifying is: " << endl;
-  showEmployeeList(employeesArray);
-
+  cout << "*****************************************************" << endl;
 }
