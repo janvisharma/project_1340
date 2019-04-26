@@ -1,4 +1,4 @@
-First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status |
-Janvi | Sharma | 3035552894 | 18 | CEO | 999999 | 421A, RC Lee Hall, 6A Sassoon Road, Hong Kong | +85268578040 | 9 Nov 2000 | True |
-Sean | Chok | 3035551644 | 20 | HR manager and software / hardware developer | 1 | 915B, RC Lee Hall, 6A Sassoon Road, Hong Kong | +85267348135 | 22 June 1998 | False |
+First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status | 
+Janvi | Sharma | 3035552894 | 18 | CEO | 999999 | 421A, RC Lee Hall, 6A Sassoon Road, Hong Kong | +85268578040 | 9 Nov 2000 | True | 
+Sean | Chok | 3035551644 | 20 | HR manager and software / hardware developer | 1 | 915B, RC Lee Hall, 6A Sassoon Road, Hong Kong | +85267348135 | 22 June 1998 | False | 
 Hazel | Yap | 3035553393123456789 | 21 | sloth | 100000 | 1315B, RC Lee Hall | 98765 | 21 Jan 1998 | True | 

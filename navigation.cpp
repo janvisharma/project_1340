@@ -14,6 +14,71 @@
 using namespace std;
 
 
+// Additional functions
+void centreJustify(string str, int width){
+  int strLength = str.length();
+  if (strLength > width) {
+    strLength = width;
+  }
+  int pos=(int)((width-strLength)/2);
+  for(int i=0;i<pos;i++)
+  {
+     cout << " ";
+  }
+  if (strLength == width) {
+    str = str.substr(0, width);
+  }
+  cout << str;
+  if (strLength % 2 == 0) {
+    pos++;
+  }
+  for(int i=0;i<pos;i++)
+  {
+     cout << " ";
+  }
+  cout << " ";
+}
+
+string setPrecision(double s){
+  string sal;
+  int pos;
+  sal = to_string(s);
+  pos = sal.find('.')+3;
+  if(pos)
+  {
+    sal.erase(pos);
+  }
+  return sal;
+}
+
+void showEmployeeList(vector <Employee> employeesArray) {
+  Employee thisEmployee;
+  string header[5]={"First Name","Last Name","Employee ID","Salary","Employee Status"};
+  // display index
+  cout << "Index ";
+  for(int i=0;i<5;i++)
+  {
+    centreJustify(header[i], 15);
+  }
+  cout << endl;
+
+  for(int i=0;i<employeesArray.size();i++)
+  {
+    thisEmployee = employeesArray[i];
+    string values[5] = {thisEmployee.getFirstName(),thisEmployee.getLastName(), thisEmployee.getEmployeeId(), setPrecision(thisEmployee.getSalary()) };
+
+    values[4] = thisEmployee.getIsAnEmployee() ? "True" : "False";
+
+    centreJustify(to_string(i + 1), 5);
+    for(int j=0;j<5;j++)
+    {
+      centreJustify(values[j], 15);
+    }
+    cout<<endl;
+  }
+}
+
+
 // User choice = 0, exit program
 void exitProgram(string filename, vector <Employee> employeesArray) {
   ofstream fout;
@@ -25,6 +90,8 @@ void exitProgram(string filename, vector <Employee> employeesArray) {
   cout << "*****************************************************" << endl;
   exit(1);
 }
+
+
 // User choice = 1, create new employee record
 void createNewEmployee(vector <Employee> & employeesArray)
 {
@@ -71,101 +138,6 @@ void createNewEmployee(vector <Employee> & employeesArray)
 
   cout << "*****************************************************" << endl;
 }
-// User choice = 3, Display all employee records
-void centreJustify(string str, int width){
-  int strLength = str.length();
-  if (strLength > width) {
-    strLength = width;
-  }
-  int pos=(int)((width-strLength)/2);
-  for(int i=0;i<pos;i++)
-  {
-     cout << " ";
-  }
-  if (strLength == width) {
-    str = str.substr(0, width);
-  }
-  cout << str;
-  if (strLength % 2 == 0) {
-    pos++;
-  }
-  for(int i=0;i<pos;i++)
-  {
-     cout << " ";
-  }
-  cout << " ";
-}
-string setPrecision(double s){
-  string sal;
-  int pos;
-  sal = to_string(s);
-  pos = sal.find('.')+3;
-  if(pos)
-  {
-    sal.erase(pos);
-  }
-  return sal;
-}
-void displayEmployees(vector <Employee> employeesArray){
-  cout << "*****************************************************" << endl;
-
-  Employee thisEmployee;
-  string header[5]={"First Name","Last Name","Employee ID","Salary","Employee Status"};
-  // display index
-  cout << "Index ";
-  for(int i=0;i<5;i++)
-  {
-    centreJustify(header[i], 15);
-  }
-  cout << endl;
-
-  for(int i=0;i<employeesArray.size();i++)
-  {
-    thisEmployee = employeesArray[i];
-    string values[5] = {thisEmployee.getFirstName(),thisEmployee.getLastName(), thisEmployee.getEmployeeId(), setPrecision(thisEmployee.getSalary()) };
-
-    values[4] = thisEmployee.getIsAnEmployee() ? "True" : "False";
-
-    centreJustify(to_string(i + 1), 5);
-    for(int j=0;j<5;j++)
-    {
-      centreJustify(values[j], 15);
-    }
-    cout<<endl;
-  }
-
-  // ask user whether to go back to main menu or look into 1 specific employee
-  cout << "Do you wish to display the record of a specific employee (y/n)? ";
-  string userChoice;
-  cin >> userChoice;
-  if (userChoice == "y" || userChoice == "Y") {
-    int index = getValueByInteger("Index of employee");
-    while (index < 1 || index > employeesArray.size()) {
-      index = getValueByInteger("Index between 1 and " + to_string(employeesArray.size()));
-    }
-    thisEmployee = employeesArray[index - 1];
-    cout << "First Name: " << thisEmployee.getFirstName() << endl;
-    cout << "Last Name: " << thisEmployee.getLastName() << endl;
-    cout << "Employee ID: " << thisEmployee.getEmployeeId() << endl;
-    cout << "Age: " << thisEmployee.getAge() << endl;
-    cout << "Role: " << thisEmployee.getRole() << endl;
-    cout << "Salary: " << thisEmployee.getSalary() << endl;
-    cout << "Address: " << thisEmployee.getAddress() << endl;
-    cout << "Phone Number: " << thisEmployee.getPhoneNumber() << endl;
-    cout << "Date of Birth: " << thisEmployee.getDateOfBirth() << endl;
-    string empStatus = thisEmployee.getIsAnEmployee() ? "True" : "False";
-    cout << "Employee Status: " << empStatus << endl;
-  }
-  cout << endl;
-
-  cout << "*****************************************************" << endl;
-
-}
-
-
-
-
-
 
 
 // User choice = 2, search employee records
@@ -261,6 +233,40 @@ void searchEmployees(vector <Employee> employeesArray) {
 
   cout << "*****************************************************" << endl;
 }
+
+
+// User choice = 3, Display all employee records
+void displayEmployees(vector <Employee> employeesArray){
+  cout << "*****************************************************" << endl;
+  showEmployeeList(employeesArray);
+
+  // ask user whether to go back to main menu or look into 1 specific employee
+  cout << "Do you wish to display the record of a specific employee?" << endl;
+  string userChoice = getValueByString("(y/n)");
+  if (userChoice == "y" || userChoice == "Y") {
+    int index = getValueByInteger("Index of employee");
+    while (index < 1 || index > employeesArray.size()) {
+      index = getValueByInteger("Index between 1 and " + to_string(employeesArray.size()));
+    }
+    Employee thisEmployee = employeesArray[index - 1];
+    cout << "First Name: " << thisEmployee.getFirstName() << endl;
+    cout << "Last Name: " << thisEmployee.getLastName() << endl;
+    cout << "Employee ID: " << thisEmployee.getEmployeeId() << endl;
+    cout << "Age: " << thisEmployee.getAge() << endl;
+    cout << "Role: " << thisEmployee.getRole() << endl;
+    cout << "Salary: " << thisEmployee.getSalary() << endl;
+    cout << "Address: " << thisEmployee.getAddress() << endl;
+    cout << "Phone Number: " << thisEmployee.getPhoneNumber() << endl;
+    cout << "Date of Birth: " << thisEmployee.getDateOfBirth() << endl;
+    string empStatus = thisEmployee.getIsAnEmployee() ? "True" : "False";
+    cout << "Employee Status: " << empStatus << endl;
+  }
+  cout << endl;
+
+  cout << "*****************************************************" << endl;
+
+}
+
 
 // User choice = 4, sort employee records
 void sortEmployeesArray(vector <Employee> & employeesArray) {
