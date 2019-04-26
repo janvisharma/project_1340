@@ -84,6 +84,7 @@ Our program contains the following features in a menu-based navigation:
 4: Sort employee records.
 5: Modify record of an employee.
 6: Fire an employee.
+7. Delete an employee record
 ```
 
 #### Exit the program
@@ -126,13 +127,13 @@ A list of employees is displayed, but with 5 attributes only; the attributes inc
 ```
 4: Sort employee records.
 ```
-A list of attributes is shown to let the user choose some based on a decreasing order of sorting importance. `employeesArray` is sorted based on that order.
+A list of attributes is shown to let the user choose some attributes based on a decreasing order of sorting importance. `employeesArray` is sorted based on that order.
 
 #### Modify record of an employee
 ```
 5: Modify record of an employee.
 ```
-A list of employees is shown *(the same function in __feature #3__ is used here)*. An index of the employee that the user wants to modify is asked. Then, a list of all employee attributes is displayed; subsequently, the user is asked to select 1 attribute, and enter a new value for that attribute. The user is then asked to confirm the changes, or make further changes to that employee. Afterwards, the user is asked whether to modify other employee records; if yes, the above process is repeated, otherwise, the program flows back to the navigation menu.
+A list of employees is shown *(the same function in __feature #3__ is used here)*. An index of the employee that the user wants to modify is asked. Then, a list of all employee attributes (except for `Employee Status`) is displayed; subsequently, the user is asked to select 1 attribute, and enter a new value for that attribute. The user is then asked to confirm the changes.
 
 #### Fire an employee
 ```
@@ -143,6 +144,15 @@ Technically, we could have asked the user to simply use **feature #5** to modify
 A list of employees is shown. The user is asked to input a line that contains the index of the employees to be fired. Then, the user is also asked to make confirmation.
 
 **Firing an employee is not equivalent to completely removing the entire employee record, instead it updates the `Employee Status` attribute to `False`.**
+
+#### Delete an employee record
+```
+7. Delete an employee record
+```
+A list of employees is shown. The user is asked to input a line that contains the index of the employees to be deleted. Then the user is also asked to make confirmation.
+
+**The data of the `Employee`'s chosen is deleted from memory, and the subsequent output file does not contain the deleted data.**
+
 
 ## Problems and Possible Further Improvements
 ### 1. Employee Attributes

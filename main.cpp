@@ -53,6 +53,7 @@ int main() {
     cout << "4: Sort employee records." << endl;
     cout << "5: Modify record of an employee." << endl;
     cout << "6: Fire an employee." << endl;
+    cout << "7. Delete an employee record" << endl;
 
     cout << "-----------------------------------------------------" << endl;
 
@@ -98,7 +99,7 @@ int main() {
 
       default:
         {
-          cout << "\nPlease enter a valid number from the options given." << endl;
+          cout << "\nPlease make a valid choice from the options given." << endl;
           break;
         }
     }

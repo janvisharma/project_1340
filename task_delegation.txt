@@ -12,11 +12,13 @@ Janvi
 25 April
 
 - list all employees
+26 April
 
 - update an employee
+26 April
 
 - fire employee
-
+27 April
 
 
 Sean
