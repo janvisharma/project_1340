@@ -503,9 +503,9 @@ void deleteEmployeeRecords(vector <Employee> & employeesArray) {
   showEmployeeList(employeesArray);
 
   // get a vector of employee index
-  bool userConfirmation = false;
+  bool userConfirmation = true;
 
-  while(!userConfirmation){
+  while(userConfirmation){
 
     string userPrompt = "Please select indices to delete accordingly. More than 1 index can be selected, separated by a space. Indices: ";
     vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
@@ -514,7 +514,24 @@ void deleteEmployeeRecords(vector <Employee> & employeesArray) {
     cout << "Are you sure you want to continue? " <<  endl;
     userConfirmation = getValueByBoolean("(y/n)");
 
+    if(userConfirmation){
+      for(int i = 0;i < indices.size(); i++)
+      {
+        int employeeIndex = indices[i] - 1;
+        employeesArray.erase(employeesArray.begin() + employeeIndex);
+      }
+      break;
+    }
+
+    // if user confirms no, prompt if user wants to fire any employees
+    cout << "Do you still want to delte an employee record? ";
+    userConfirmation = getValueByBoolean("(y/n)");
+
+
   }
+
+  cout << "The employee list after deleting employee record is: " << endl;
+  showEmployeeList(employeesArray);
 
 
 
