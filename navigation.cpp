@@ -451,11 +451,48 @@ void modifyEmployeeRecords(vector <Employee> & employeesArray){
 
 // User choice = 6, fire employees
 void fireEmployees(vector <Employee> & employeesArray) {
+  cout << "*****************************************************" << endl;
 
+  // show employees list
+
+  // get a vector of employee index
+  string userPrompt = "";
+  vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
+
+  // prompt for confirmation
+
+  // if user confirms yes, fire each employee in array by index, by updating isAnEmployee attribute, then return to navigation menu
+
+  // if user confirms no, prompt if user wants to fire any employees
+
+  // if yes, repeat indices prompt process
+
+  // if no, return to navigation menu
+
+
+  cout << "*****************************************************" << endl;
 }
 
 
 // User choice = 7, delete employees
 void deleteEmployeeRecords(vector <Employee> & employeesArray) {
+  cout << "*****************************************************" << endl;
 
+  // show employees list
+
+  // get a vector of employee index
+  string userPrompt = "";
+  vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
+
+  // prompt for confirmation
+
+  // if user confirms yes, delete each employee in array by index
+
+  // if user confirms no, prompt if user wants to delete any employees
+
+  // if yes, repeat indices prompt process
+
+  // if no, return to navigation menu
+
+  cout << "*****************************************************" << endl;
 }
