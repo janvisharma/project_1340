@@ -14,8 +14,6 @@ Some problems faced by Sean are:
 2. How to look for a specific record of an employee?
 3. How to know whether an employee is a current employee or has been fired?
 4. How to effectively edit the details of the employee?
-5. How to find out which employees earn more than a specific employee?
-
 
 ### Program Features
 The program will be menu driven, and it will contain the following features:
@@ -25,6 +23,7 @@ The program will be menu driven, and it will contain the following features:
 4. Sort the employee records.
 5. Edit the details of a current employee.
 6. Fire an employee, update this status in the record of all employees.
+7. Delete employee records, completely removing it from the employee data file.
 
 ## Building and Running the Program
 We have made using the program a rather simple task for anyone with a Unix-based terminal. Just follow the following instructions, and execute these commands in order. However, you are required to have [git](https://www.atlassian.com/git/tutorials/install-git), [g++ compiler](https://www.cs.odu.edu/~zeil/cs250PreTest/latest/Public/installingACompiler/), and [make](https://www.gnu.org/software/make/) installed.
@@ -47,7 +46,20 @@ Start running the program.
 
 ## Our Data Structure
 ### Level 1: The Employee Class
-
+An `Employee` class has been implemented for the use of the entire program. It stores `Employee` attributes as private information. The attributes are:
+```
+string firstName;
+string lastName;
+string employeeId;
+int age;
+string role;
+double salary;
+string address;
+string phoneNumber;
+string dateOfBirth;
+bool isAnEmployee;
+```
+It has all of the setter and getter functions for each attribute, it also contains additional functions such as `getNumberOfEmployeeAttributes`, that are essential for many other parts of the program.
 
 ### Level 2: Dynamic Array (C++ Vectors) of Employee(s)
 We have considered using either dynamic arrays (C++ vector library) or linked lists to store the employee records, and evaluated the pros and cons of each approach. We found out that arrays are more suitable for our application due to a couple of reasons:
@@ -166,9 +178,7 @@ struct Attribute {
 ```
 Then, the `Employee` class will store a vector of `Attributes`, and it will also contain setter and getter functions.
 
-### 2. Handle User Input
-To a certain degree, user inputs are being processed before they influence the program flow. For example, when the user is asked to enter a salary (data type double), the module `handle_user_input` would check if the input can be converted into a double; otherwise, the user will be prompted for a valid input. However, as our `Employee` class implementation is rather rigid, it has been quite difficult to call these functions in a more DRY way, so we eneded up with a lot of WET code.
+### 2. Code Modularity
+As our `Employee` class implementation is rather rigid, it has been quite difficult to call functions in a more DRY way, so we ended up with a lot of WET code. For example, we have separate functions for `getFirstName` and `getLastName`, in which both deal with the `string` data type. Hence, we have used a great deal of switches to handle each `Employee` attribute differently.
 
-One of the more acute problems is our handling of user input while creating a new employee (`createNewEmployee` in `navigation`). When asking the user for the new employee's attributes, inputs are being taken using `getline(cin, attribute)`, and converted directly to `string`, `int`, `double` and `boolean` type without any program fallbacks. In other words, if the user enters something that cannot be converted to a double for the `salary` attribute, the program will crash.
-
-Therefore, the first thing to do is to solve **Problem 1**, and use the greatly improved `Employee` class to handle user input.
+Therefore, the first thing to do is to solve **Problem 1**, and use the greatly improved `Employee` class to make the code base more modular.
