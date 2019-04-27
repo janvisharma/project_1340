@@ -102,6 +102,14 @@ int promptForOneAttribute(string userPrompt, int numberOfEmployeeAttributes) {
   return attributeInteger;
 }
 
+void changeEmployeeStatus(vector <int> indices, vector <Employee> & employeesArray){
+  for(int i = 0;i < indices.size(); i++)
+  {
+    int employeeIndex = indices[i] - 1;
+    employeesArray[employeeIndex].setIsAnEmployee("false");
+  }
+}
+
 
 // User choice = 0, exit program
 void exitProgram(string filename, vector <Employee> employeesArray) {
@@ -194,16 +202,11 @@ void searchEmployees(vector <Employee> employeesArray) {
 
   // prompt for selection of 1 attribute
   string userPrompt = "Please select 1 attribute as search criteria: ";
-  string attributeString = getValueFromStringStream(userPrompt);
-  int attributeInteger;
-  while (!checkAndConvertToIntegerWithIndexLimit(attributeInteger, attributeString, numberOfEmployeeAttributes)) {
-    userPrompt = "Invalid attribute selected. Please input again: ";
-    attributeString = getValueFromStringStream(userPrompt);
-  }
+  int attributeIndex =  promptForOneAttribute(userPrompt, numberOfEmployeeAttributes);
 
   // search by using switch, prompt for searchValue
   vector <Employee> filteredEmployeesArray;
-  switch (attributeInteger) {
+  switch (attributeIndex) {
     case 1: {
       string searchValue = getValueByLongString("first name");
       filterEmployeesByFirstName(employeesArray, filteredEmployeesArray, searchValue);
@@ -411,13 +414,7 @@ void modifyEmployeeRecords(vector <Employee> & employeesArray){
 
   cout << "*****************************************************" << endl;
 }
-void changeEmployeeStatus(vector <int> indices, vector <Employee> & employeesArray){
-  for(int i = 0;i < indices.size(); i++)
-  {
-    int employeeIndex = indices[i] - 1;
-    employeesArray[employeeIndex].setIsAnEmployee("false");
-  }
-}
+
 
 // User choice = 6, fire employees
 void fireEmployees(vector <Employee> & employeesArray) {
@@ -427,7 +424,7 @@ void fireEmployees(vector <Employee> & employeesArray) {
   showEmployeeList(employeesArray);
 
   bool userConfirmation = true;
-  while(userConfirmation){
+  while (userConfirmation) {
     // get a vector of employee index
     string userPrompt = "Please select indices to fire accordingly. More than 1 index can be selected, separated by a space. Indices: ";
     vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
@@ -437,7 +434,7 @@ void fireEmployees(vector <Employee> & employeesArray) {
     userConfirmation = getValueByBoolean("(y/n)");
 
     // if user confirms yes, fire each employee in array by index, by updating isAnEmployee attribute, then return to navigation menu
-    if(userConfirmation){
+    if (userConfirmation) {
       changeEmployeeStatus(indices, employeesArray);
       break;
     }
@@ -449,6 +446,8 @@ void fireEmployees(vector <Employee> & employeesArray) {
   }
   cout << "\nThe employee list after firing is: " << endl;
   showEmployeeList(employeesArray);
+
+  cout << "\n" << endl;
 
   cout << "*****************************************************" << endl;
 }
@@ -464,7 +463,7 @@ void deleteEmployeeRecords(vector <Employee> & employeesArray) {
   // get a vector of employee index
   bool userConfirmation = true;
 
-  while(userConfirmation){
+  while (userConfirmation) {
 
     string userPrompt = "Please select indices to delete accordingly. More than 1 index can be selected, separated by a space. Indices: ";
     vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
@@ -473,7 +472,7 @@ void deleteEmployeeRecords(vector <Employee> & employeesArray) {
     cout << "Are you sure you want to continue? " <<  endl;
     userConfirmation = getValueByBoolean("(y/n)");
 
-    if(userConfirmation){
+    if (userConfirmation) {
       for(int i = 0;i < indices.size(); i++)
       {
         int employeeIndex = indices[i] - 1;
@@ -483,16 +482,14 @@ void deleteEmployeeRecords(vector <Employee> & employeesArray) {
     }
 
     // if user confirms no, prompt if user wants to fire any employees
-    cout << "Do you still want to delte an employee record? ";
+    cout << "Do you still want to delete an employee record? ";
     userConfirmation = getValueByBoolean("(y/n)");
-
-
   }
 
-  cout << "The employee list after deleting employee record is: " << endl;
+  cout << "\nThe employee list after deleting employee record is: " << endl;
   showEmployeeList(employeesArray);
 
-
+  cout << "\n";
 
   cout << "*****************************************************" << endl;
 }
