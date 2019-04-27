@@ -1,8 +1,8 @@
 # 2018/19 Semester 2 ENGG1340 Course Project (Group 9)
 
 #### Group members
-- Janvi Sharma (3035552894)
-- Sean Chok (3035551644)
+- [Janvi Sharma](https://github.com/janvisharma) (3035552894)
+- [Sean Chok](https://github.com/98sean98) (3035551644)
 
 ## Introduction
 ### Problem Statement
