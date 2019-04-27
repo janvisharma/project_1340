@@ -11,32 +11,44 @@
 using namespace std;
 
 int main() {
-  Employee janvi; // class constructor
+  // initial welcome and prompt for file
+  cout << "-----------------------------------------------------" << endl;
+  cout << "\n\tEmployee Management System" << endl;
+  cout << "\nWould you like to:" << endl;
+  cout << "1. Load existing employee file." << endl;
+  cout << "2. Create new employee file." << endl;
 
-  janvi.setFirstName("Janvi");
-  janvi.setLastName("Sharma");
-  janvi.setEmployeeId("3035552894");
-  janvi.setIsAnEmployee("TRUE");
-
-  // user interface
-  // load employee data file
-  string employeeDataFilename;
-
-  cout << "Welcome back." << endl;
-  cout << "Please input name of employee data file: ";
-  cin >> employeeDataFilename;
-
-  ifstream fin;
-  bool isOpen = openIfstream(fin, employeeDataFilename);
-  while(!isOpen)
-  {
-    cout << "Please input valid file name: ";
-    cin >> employeeDataFilename;
-    isOpen = openIfstream(fin, employeeDataFilename);
+  int userFileChoice = 0;
+  while (userFileChoice != 1 && userFileChoice != 2) {
+    userFileChoice = getValueByInteger("file choice");
   }
 
-  vector <Employee> employeesArray = readEmployeeDataFile(fin);
-  fin.close();
+  string employeeDataFilename;
+  string userPrompt;
+  vector <Employee> employeesArray;
+
+  // load existing file
+  if (userFileChoice == 1) {
+    cout << "\nWelcome back, Nord Etoile!" << endl;
+    employeeDataFilename = getFileName("name of employee data file");
+
+    ifstream fin;
+    bool isOpen = openIfstream(fin, employeeDataFilename);
+    while(!isOpen)
+    {
+      employeeDataFilename = getFileName("file name");
+      isOpen = openIfstream(fin, employeeDataFilename);
+    }
+    employeesArray = readEmployeeDataFile(fin);
+    fin.close();
+
+  } else {
+    // load new file
+    cout << "\nWelcome, New User!" << endl;
+    employeeDataFilename = getFileName("name of new employee data file");
+  }
+
+  cout << "-----------------------------------------------------" << endl;
 
   // menu-based navigation
   int userChoice;

@@ -210,6 +210,18 @@ vector <int> getIndices(string userPrompt, string purpose, int indexLimit) {
   return indices;
 }
 
+string getFileName(string prompt) {
+  string userPrompt = "Please input " + prompt + ": ";
+  string filename = getValueFromStringStream(userPrompt);
+  int dotIndex = filename.find('.');
+  while (filename.length() - dotIndex - 1 != 3 || filename.substr(dotIndex + 1, 3) != "txt") {
+    userPrompt = "Please input valid " + prompt + ": ";
+    filename = getValueFromStringStream(userPrompt);
+    dotIndex = filename.find('.');
+  }
+  return filename;
+}
+
 string setEmployeeBySwitch(Employee & thisEmployee, int attributeIndex) {
   switch(attributeIndex) {
     case 1:

@@ -25,4 +25,6 @@ bool getValueByBoolean(string);
 
 vector <int> getIndices(string, string, int);
 
+string getFileName(string);
+
 string setEmployeeBySwitch(Employee &, int);
