@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include "employee_class.h"
 
 using namespace std;
 
@@ -23,3 +24,5 @@ double getValueByDouble(string);
 bool getValueByBoolean(string);
 
 vector <int> getIndices(string, string, int);
+
+string setEmployeeBySwitch(Employee &, int);
