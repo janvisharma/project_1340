@@ -92,6 +92,16 @@ void showSpecificEmployee(Employee employee) {
   cout << "Employee Status: " << empStatus << endl;
 }
 
+int promptForOneAttribute(string userPrompt, int numberOfEmployeeAttributes) {
+  string attributeString = getValueFromStringStream(userPrompt);
+  int attributeInteger;
+  while (!checkAndConvertToIntegerWithIndexLimit(attributeInteger, attributeString, numberOfEmployeeAttributes)) {
+    userPrompt = "Invalid attribute selected. Please input again: ";
+    attributeString = getValueFromStringStream(userPrompt);
+  }
+  return attributeInteger;
+}
+
 
 // User choice = 0, exit program
 void exitProgram(string filename, vector <Employee> employeesArray) {
@@ -112,43 +122,53 @@ void createNewEmployee(vector <Employee> & employeesArray)
   cout << "*****************************************************" << endl;
 
   Employee newEmployee;
-  cout << "Creating a new employee. You will be prompted " << newEmployee.getNumberOfEmployeeAttributes() << " attributes." << endl;
-
-  string attributes[10];
-  vector <string> attributesPrompt = {"First Name", "Last Name", "Employee ID", "Age", "Role", "Salary", "Address", "Phone Number", "Date of Birth (Do Month YYYY)", "Employee Status (True / False)"};
-
-  string userPrompt;
+  int numberOfEmployeeAttributes = newEmployee.getNumberOfEmployeeAttributes();
+  cout << "Creating a new employee. You will be prompted " << numberOfEmployeeAttributes << " attributes." << endl;
 
   // first prompt
-  for (int i = 0; i < attributesPrompt.size(); i++) {
-    userPrompt = to_string(i) + ". Enter " + attributesPrompt[i] + ": ";
-    attributes[i] = handleUserInputLine(userPrompt);
+  for (int i = 0; i < numberOfEmployeeAttributes; i++) {
+    setEmployeeBySwitch(newEmployee, i + 1);
   }
 
+  string userPrompt;
   // prompt for any change before putting into employees array
   bool userConfirmation = false;
   int attributeInteger;
   while (!userConfirmation) {
-    cout << "\nAny information to be changed before creating employee record? Select between 0 to 9 as previously asked.\nEnter -1 to confirm employee record entered, -2 to cancel creation, and go back to main program.\n" << endl;
-    cout << "Enter: ";
-    cin >> attributeInteger;
-    if (attributeInteger == -1) {
-      userConfirmation = true;
-      break;
+    // ask for modification before confirmation
+    cout << "\nAny information to be changed before creating employee record?" << endl;
+    while (getValueByBoolean("(y/n)")) {
+
+      cout << "1: First Name" << endl;
+      cout << "2: Last Name" << endl;
+      cout << "3: Employee ID" << endl;
+      cout << "4: Age" << endl;
+      cout << "5: Role" << endl;
+      cout << "6: Salary" << endl;
+      cout << "7. Address" << endl;
+      cout << "8: Phone Number" << endl;
+      cout << "9: Date of Birth" << endl;
+      cout << "10: Employee Status" << endl;
+
+      userPrompt = "Please select 1 attribute to modify: ";
+      attributeInteger = promptForOneAttribute(userPrompt, numberOfEmployeeAttributes);
+      // change newEmployee attribute
+      setEmployeeBySwitch(newEmployee, attributeInteger);
+
+      cout << "\nAttribute of new employee changed. Current information:" << endl;
+      showSpecificEmployee(newEmployee);
+      cout << "\n";
     }
-    if (attributeInteger == -2) {
-      return;
-    }
-    userPrompt = to_string(attributeInteger) + ". Enter " + attributesPrompt[attributeInteger] + ": ";
-    attributes[attributeInteger] = handleUserInputLine(userPrompt);
-    cout << "Attribute changed." << endl;
+
+    // ask for confirmation of employee creation
+    cout << "Confirm creation of employee record?" << endl;
+    userConfirmation = getValueByBoolean("(y/n)");
   }
 
-  // set all attributes and put into employees array
-  newEmployee.setAllAttributes(attributes);
+  // put into employees array
   employeesArray.push_back(newEmployee);
 
-  cout << "New employee with first name: " << newEmployee.getFirstName() << " has been created." << endl;
+  cout << "\nNew employee with first name: " << newEmployee.getFirstName() << " has been created.\n" << endl;
 
   cout << "*****************************************************" << endl;
 }
@@ -355,8 +375,7 @@ void modifyEmployeeRecords(vector <Employee> & employeesArray){
     indexString = getValueFromStringStream(userPrompt);
   }
 
-  Employee thisEmployee;
-  thisEmployee = employeesArray[index - 1];
+  Employee thisEmployee = employeesArray[index - 1];
 
   // list all available attributes
   cout << "List of available employee attributes for modifying:" << endl;
@@ -372,80 +391,20 @@ void modifyEmployeeRecords(vector <Employee> & employeesArray){
 
   int numberOfEmployeeAttributes = 9;
 
-  userPrompt = "Please select 1 attribute as to modify: ";
-  string attributeString = getValueFromStringStream(userPrompt);
-  int attributeIndex;
-  while (!checkAndConvertToIntegerWithIndexLimit(attributeIndex, attributeString, numberOfEmployeeAttributes)) {
-    userPrompt = "Invalid attribute selected. Please input again: ";
-    attributeString = getValueFromStringStream(userPrompt);
-  }
+  userPrompt = "Please select 1 attribute to modify: ";
+  int attributeIndex = promptForOneAttribute(userPrompt, numberOfEmployeeAttributes);
 
-  switch(attributeIndex){
-    case 1:
-    {
-      string firstName = getValueByLongString("first name");
-      thisEmployee.setFirstName(firstName);
-      break;
-    }
-    case 2:
-    {
-      string lastName = getValueByLongString("last name");
-      thisEmployee.setLastName(lastName);
-      break;
-    }
-    case 3:
-    {
-      string employeeId = getValueByLongString("employee id");
-      thisEmployee.setEmployeeId(employeeId);
-      break;
-    }
-    case 4:
-    {
-      int age = getValueByInteger("age");
-      thisEmployee.setAge(to_string(age));
-      break;
-    }
-    case 5:
-    {
-      string role = getValueByLongString("role");
-      thisEmployee.setRole(role);
-      break;
-    }
-    case 6:
-    {
-      double salary = getValueByDouble("salary");
-      thisEmployee.setSalary(to_string(salary));
-      break;
-    }
-    case 7:
-    {
-      string address = getValueByLongString("address");
-      thisEmployee.setAddress(address);
-      break;
-    }
-    case 8:
-    {
-      string phoneNumber = getValueByLongString("phone number");
-      thisEmployee.setPhoneNumber(phoneNumber);
-      break;
-    }
-    case 9:
-    {
-      string dateOfBirth = getValueByLongString("date of birth (Do Month YYYY)");
-      thisEmployee.setDateOfBirth(dateOfBirth);
-      break;
-    }
-  }
+  // set thisEmployee attribute according to attributeIndex
+  setEmployeeBySwitch(thisEmployee, attributeIndex);
 
   // show modified employee (full record)
   cout << "\nModified employee record:" << endl;
   showSpecificEmployee(thisEmployee);
   // prompt user for confirmation
-  cout<<"\nAre you sure you wish to continue?" << endl;
-  string response = getValueByString("(y/n)");
+  cout << "\nAre you sure you wish to continue?" << endl;
+  bool userConfirmation = getValueByBoolean("(y/n)");
 
-  if(response == "y" || response == "Y")
-  {
+  if (userConfirmation) {
     // store thisEmployee into array
     employeesArray[index - 1] = thisEmployee;
   }
