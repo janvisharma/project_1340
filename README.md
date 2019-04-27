@@ -83,8 +83,8 @@ Our program contains the following features in a menu-based navigation:
 3: Display list of employees.
 4: Sort employee records.
 5: Modify record of an employee.
-6: Fire an employee.
-7. Delete an employee record
+6: Fire employees.
+7. Delete employee records.
 ```
 
 #### Exit the program
@@ -93,17 +93,17 @@ Our program contains the following features in a menu-based navigation:
 ```
 The user exits the program, and an output filestream is invoked to store `employeesArray` data into the file.
 
-#### Create a new employee
+#### Create a new employee record
 ```
 1: Create a new employee record.
 ```
-The user is prompted a series of employee attributes such as first name, last name, etc to create a new employee. Furthermore, our program asks the user for  necessary modifications (just in case he / she has typed incorrect values) before letting the user confirm the employee creation.
+The user is prompted a series of employee attributes such as first name, last name, etc to create a new employee. Furthermore, our program asks the user for necessary modifications (just in case he / she has typed incorrect values) before letting the user confirm the employee creation.
 
 #### Search employees
 ```
 2: Search employees.
 ```
-The user is asked to search for employees based on the selection of 1 employee attribute. However, the `address` attribute is disabled because it is to our knowledge that searching based on long string values such as `address` is not meaningful. The allowed employee attributes are as follows:
+The user is asked to search for employees based on the selection of 1 employee attribute. However, the `address` attribute is disabled because it is to our knowledge that searching based on long string values such as `address` is not meaningful. The allowed employee attributes for searching are as follows:
 ```
 1: First Name
 2: Last Name
@@ -133,11 +133,11 @@ A list of attributes is shown to let the user choose some attributes based on a 
 ```
 5: Modify record of an employee.
 ```
-A list of employees is shown *(the same function in __feature #3__ is used here)*. An index of the employee that the user wants to modify is asked. Then, a list of all employee attributes (except for `Employee Status`) is displayed; subsequently, the user is asked to select 1 attribute, and enter a new value for that attribute. The user is then asked to confirm the changes.
+A list of employees is shown. An index of the employee that the user wants to modify is asked. Then, a list of all employee attributes (except for `Employee Status`) is displayed; subsequently, the user is asked to select 1 attribute, and enter a new value for that attribute. The user is then asked to confirm the changes.
 
-#### Fire an employee
+#### Fire employees
 ```
-6: Fire an employee.
+6: Fire employees.
 ```
 Technically, we could have asked the user to simply use **feature #5** to modify an employee's `Employee Status` attribute to `False`. However, we want to provide a faster way for the user to modify that attribute quickly without having to go through the process of choosing it.
 
@@ -145,9 +145,9 @@ A list of employees is shown. The user is asked to input a line that contains th
 
 **Firing an employee is not equivalent to completely removing the entire employee record, instead it updates the `Employee Status` attribute to `False`.**
 
-#### Delete an employee record
+#### Delete employee records
 ```
-7. Delete an employee record
+7. Delete employee records.
 ```
 A list of employees is shown. The user is asked to input a line that contains the index of the employees to be deleted. Then the user is also asked to make confirmation.
 

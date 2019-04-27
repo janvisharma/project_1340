@@ -66,8 +66,8 @@ int main() {
       cout << "3: Display list of employees." << endl;
       cout << "4: Sort employee records." << endl;
       cout << "5: Modify record of an employee." << endl;
-      cout << "6: Fire an employee." << endl;
-      cout << "7. Delete an employee record" << endl;
+      cout << "6: Fire employees." << endl;
+      cout << "7. Delete employee records." << endl;
     }
 
     cout << "-----------------------------------------------------" << endl;

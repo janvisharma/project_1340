@@ -20,6 +20,8 @@ Janvi
 - fire employee
 27 April
 
+- delete employee
+27 April
 
 Sean
 - Class interface and implementation - done
