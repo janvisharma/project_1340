@@ -70,14 +70,14 @@ void writeEmployeeDataFile(ofstream & fout, vector <Employee> employeesArray) {
   string delimiter = " | ";
 
   // output header line
-  string * attributesHeader = employeesArray[0].getAttributesHeader();
-  for (int i = 0; i < employeesArray[0].getNumberOfEmployeeAttributes(); i++) {
+  Employee thisEmployee;
+  string * attributesHeader = thisEmployee.getAttributesHeader();
+  for (int i = 0; i < thisEmployee.getNumberOfEmployeeAttributes(); i++) {
     fout << attributesHeader[i] << delimiter;
   }
   fout << endl;
 
   // output each Employee in employeesArray
-  Employee thisEmployee;
   for (int i = 0; i < employeesArray.size(); i++) {
     thisEmployee = employeesArray[i];
     fout << thisEmployee.getFirstName() << delimiter;

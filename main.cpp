@@ -60,17 +60,24 @@ int main() {
     // menu
     cout << "0: Exit the program, and record changes to your employee data in the file you loaded." << endl;
     cout << "1: Create a new employee record." << endl;
-    cout << "2: Search employees." << endl;
-    cout << "3: Display list of employees." << endl;
-    cout << "4: Sort employee records." << endl;
-    cout << "5: Modify record of an employee." << endl;
-    cout << "6: Fire an employee." << endl;
-    cout << "7. Delete an employee record" << endl;
+    // if employees array is empty, do not allow user to pick menu options 2 to 7
+    if (employeesArray.size() > 0) {
+      cout << "2: Search employees." << endl;
+      cout << "3: Display list of employees." << endl;
+      cout << "4: Sort employee records." << endl;
+      cout << "5: Modify record of an employee." << endl;
+      cout << "6: Fire an employee." << endl;
+      cout << "7. Delete an employee record" << endl;
+    }
 
     cout << "-----------------------------------------------------" << endl;
 
     // prompt for user input
     userChoice = getValueByInteger("choice");
+    if (employeesArray.size() == 0 && (userChoice > 1 || userChoice < 0)) {
+      cout << "\nThere aren't any employee records. The function you have selected is not available." << endl;
+      continue;
+    }
 
     switch (userChoice) {
       // all cases will call a corresponding function from navigation.h

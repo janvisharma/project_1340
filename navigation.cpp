@@ -62,7 +62,7 @@ void showEmployeeList(vector <Employee> employeesArray) {
   }
   cout << endl;
 
-  for(int i=0;i<employeesArray.size();i++)
+  for(int i = 0;i < employeesArray.size(); i++)
   {
     thisEmployee = employeesArray[i];
     string values[5] = {thisEmployee.getFirstName(),thisEmployee.getLastName(), thisEmployee.getEmployeeId(), setPrecision(thisEmployee.getSalary()) };
@@ -70,7 +70,7 @@ void showEmployeeList(vector <Employee> employeesArray) {
     values[4] = thisEmployee.getIsAnEmployee() ? "True" : "False";
 
     centreJustify(to_string(i + 1), 5);
-    for(int j=0;j<5;j++)
+    for(int j = 0;j < 5; j++)
     {
       centreJustify(values[j], 15);
     }
@@ -169,7 +169,7 @@ void createNewEmployee(vector <Employee> & employeesArray)
     }
 
     // ask for confirmation of employee creation
-    cout << "Confirm creation of employee record?" << endl;
+    cout << "\nConfirm creation of employee record?" << endl;
     userConfirmation = getValueByBoolean("(y/n)");
   }
 

@@ -8,7 +8,6 @@
 using namespace std;
 
 Employee::Employee(void) {
-  cout << "Creating a new employee..." << endl;
 }
 
 // setter functions
