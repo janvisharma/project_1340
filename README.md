@@ -71,20 +71,20 @@ Hence, a dynamic array using C++ vectors has been implemented.
 
 ## Using the Program
 ### File I/O
-When the program user runs the `main` program, he / she is first asked to either create a new employee data record file, or load an existing file. The file format must be `.txt`, and it has to conform to the following rules:
+When the program user runs the `main` program, he / she is first asked to either **create a new employee data record file**, or **load an existing file**. The file extension must be `.txt`, and it has to conform to the following rules:
 1. Header line
 ```
 First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status |
 ```
-1. Data line
+2. Data line
 Example:
 ```
-Jon | Snow | 1010101010 | 22 | Rightful King of 7 Kingdoms | 9999999 | Winterfell | No number | 283 AC | True |
+Jon | Snow | 1 | 22 | Rightful King of 7 Kingdoms | 9999999 | Winterfell | No number | 283 AC | True |
 ```
 
-When the user loads an existing file, the employee records is read, and a vector of Employee's is created using `vector <Employee> employeesArray` (we have kept the vector name consistent throughout our program). Functions such as searching and sorting are done using `employeesArray`.
+When the user loads an existing file (an example file called `employee_data.txt` has been provided), the employee records are read, and a vector of Employee's is created using `vector <Employee> employeesArray` (we have kept the vector name consistent throughout our program). Functions such as searching and sorting are done using `employeesArray`.
 
-When the user exits the program, the file loaded at the start is be overwritten using the `employeeArray` at the end of program run time. Essentially, each `Employee`'s data is recorded in the file using the aforementioned rules.
+When the user exits the program, the file loaded at the start is be overwritten using the `employeesArray` at the end of program run time. Essentially, each `Employee`'s data is recorded in the file using the aforementioned rules.
 
 ### Navigating the Menu
 Our program contains the following features in a menu-based navigation:
@@ -182,3 +182,6 @@ Then, the `Employee` class will store a vector of `Attributes`, and it will also
 As our `Employee` class implementation is rather rigid, it has been quite difficult to call functions in a more DRY way, so we ended up with a lot of WET code. For example, we have separate functions for `getFirstName` and `getLastName`, in which both deal with the `string` data type. Hence, we have used a great deal of switches to handle each `Employee` attribute differently.
 
 Therefore, the first thing to do is to solve **Problem 1**, and use the greatly improved `Employee` class to make the code base more modular.
+
+### 3. File I/O
+For the purpose of this project, our file i/o methods are also quite rigid in the sense that file formats must conform to those rules aforementioned. There is considerable room for improvement in this area.

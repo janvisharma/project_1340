@@ -1,5 +1,4 @@
-First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status | 
-Janvii | Sharma | 3035552894 | 18 | CEO | 999999.00 | 421A, RC Lee Hall, 6A Sassoon Road, Hong Kong | +85268578040 | 9 Nov 2000 | True | 
-SEANN | chokkk | 3035551644 | 200 | annoying | 6.78 | Japan | 2222 | 31 May 1980 | False | 
-Hazel | Yap | 3035553393123456789 | 21 | sloth | 100000.00 | 1315B, RC Lee Hall | 98765 | 21 Jan 1998 | True | 
-Ahmed | Cheema | 303236788 | 21 | gay | 80.00 | 522, RC Lee Hall | 789 | 03 January 1998 | True | 
+First Name | Last Name | Employee ID | Age | Role | Salary | Address | Phone Number | Date of Birth | Employee Status |
+Jon | Snow | 1 | 22 | Rightful King of 7 Kingdoms | 9999999 | Winterfell | No number | 283 AC | True |
+Daenerys | Targaryen | 2 | 31 | Dragon Queen | 9999999 | Dragonstone | No number | 276 AC | True | 
+Night | King | 3 | 8000 | King of the Dead | 0 | Beyond the Wall | No number | Very long ago | False |
