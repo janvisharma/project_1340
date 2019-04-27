@@ -14,4 +14,8 @@ void sortEmployeesArray(vector <Employee> &);
 
 void searchEmployees(vector <Employee>);
 
-void modifyEmployeeArray(vector <Employee> &); 
+void modifyEmployeeRecords(vector <Employee> &);
+
+void fireEmployees(vector <Employee> &);
+
+void deleteEmployeeRecords(vector <Employee> &);

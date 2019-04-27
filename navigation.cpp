@@ -337,7 +337,7 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
 }
 
 // User choice = 5, Modify employee records
-void modifyEmployeeArray(vector <Employee> & employeesArray){
+void modifyEmployeeRecords(vector <Employee> & employeesArray){
   cout << "*****************************************************" << endl;
 
   showEmployeeList(employeesArray);
@@ -446,4 +446,16 @@ void modifyEmployeeArray(vector <Employee> & employeesArray){
   }
 
   cout << "*****************************************************" << endl;
+}
+
+
+// User choice = 6, fire employees
+void fireEmployees(vector <Employee> & employeesArray) {
+
+}
+
+
+// User choice = 7, delete employees
+void deleteEmployeeRecords(vector <Employee> & employeesArray) {
+
 }

@@ -91,9 +91,22 @@ int main() {
           sortEmployeesArray(employeesArray);
           break;
         }
+
       case 5:
         {
-          modifyEmployeeArray(employeesArray);
+          modifyEmployeeRecords(employeesArray);
+          break;
+        }
+
+      case 6:
+        {
+          fireEmployees(employeesArray);
+          break;
+        }
+
+      case 7:
+        {
+          deleteEmployeeRecords(employeesArray);
           break;
         }
 
