@@ -234,15 +234,15 @@ void searchEmployees(vector <Employee> employeesArray) {
   }
 
   // print filtered employees array
+  cout << "\n";
   if (filteredEmployeesArray.size() > 0) {
     cout << "Found employee" << (filteredEmployeesArray.size() > 1 ? "s" : "") << ":" << endl;
-    for (int i = 0; i < filteredEmployeesArray.size(); i++) {
-      cout << filteredEmployeesArray[i].getFirstName() << endl;
-    }
+    // show filtered list of employees
+    showEmployeeList(filteredEmployeesArray);
   } else {
     cout << "No employee found..." << endl;
   }
-
+  cout << "\n";
 
   cout << "*****************************************************" << endl;
 }
@@ -333,6 +333,11 @@ void sortEmployeesArray(vector <Employee> & employeesArray) {
   }
 
   cout << "Sorting completed.\n" << endl;
+
+  // show list of employees
+  showEmployeeList(employeesArray);
+  cout << "\n";
+
   cout << "*****************************************************" << endl;
 }
 
