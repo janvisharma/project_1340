@@ -1,4 +1,5 @@
 #include "handle_user_input.h"
+#include "employee_class.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -207,4 +208,87 @@ vector <int> getIndices(string userPrompt, string purpose, int indexLimit) {
   }
 
   return indices;
+}
+
+string setEmployeeBySwitch(Employee & thisEmployee, int attributeIndex) {
+  switch(attributeIndex) {
+    case 1:
+    {
+      string firstName = getValueByLongString("first name");
+      thisEmployee.setFirstName(firstName);
+      return firstName;
+      break;
+    }
+    case 2:
+    {
+      string lastName = getValueByLongString("last name");
+      thisEmployee.setLastName(lastName);
+      return lastName;
+      break;
+    }
+    case 3:
+    {
+      string employeeId = getValueByLongString("employee id");
+      thisEmployee.setEmployeeId(employeeId);
+      return employeeId;
+      break;
+    }
+    case 4:
+    {
+      int age = getValueByInteger("age");
+      string ageString = to_string(age);
+      thisEmployee.setAge(ageString);
+      return ageString;
+      break;
+    }
+    case 5:
+    {
+      string role = getValueByLongString("role");
+      thisEmployee.setRole(role);
+      return role;
+      break;
+    }
+    case 6:
+    {
+      double salary = getValueByDouble("salary");
+      string salaryString = to_string(salary);
+      thisEmployee.setSalary(salaryString);
+      return salaryString;
+      break;
+    }
+    case 7:
+    {
+      string address = getValueByLongString("address");
+      thisEmployee.setAddress(address);
+      return address;
+      break;
+    }
+    case 8:
+    {
+      string phoneNumber = getValueByLongString("phone number");
+      thisEmployee.setPhoneNumber(phoneNumber);
+      return phoneNumber;
+      break;
+    }
+    case 9:
+    {
+      string dateOfBirth = getValueByLongString("date of birth (Do Month YYYY)");
+      thisEmployee.setDateOfBirth(dateOfBirth);
+      return dateOfBirth;
+      break;
+    }
+    case 10:
+    {
+      double isAnEmployeeDouble = getValueByBoolean("employee status (y/n)");
+      string isAnEmployeeString = isAnEmployeeDouble ? "true" : "false";
+      thisEmployee.setIsAnEmployee(isAnEmployeeString);
+      return isAnEmployeeString;
+      break;
+    }
+    default:
+    {
+      return "";
+      break;
+    }
+  }
 }
