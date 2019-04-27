@@ -44,6 +44,11 @@ Start running the program.
 
 `./main`
 
+To remove all `.o` and `main` files.
+
+`make clean`
+
+
 ## Our Data Structure
 ### Level 1: The Employee Class
 An `Employee` class has been implemented for the use of the entire program. It stores `Employee` attributes as private information. The attributes are:
