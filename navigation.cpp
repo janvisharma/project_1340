@@ -452,28 +452,41 @@ void modifyEmployeeRecords(vector <Employee> & employeesArray){
 
   cout << "*****************************************************" << endl;
 }
-
+void changeEmployeeStatus(vector <int> indices, vector <Employee> & employeesArray){
+  for(int i = 0;i < indices.size(); i++)
+  {
+    int employeeIndex = indices[i] - 1;
+    employeesArray[employeeIndex].setIsAnEmployee("false");
+  }
+}
 
 // User choice = 6, fire employees
 void fireEmployees(vector <Employee> & employeesArray) {
   cout << "*****************************************************" << endl;
 
   // show employees list
+  showEmployeeList(employeesArray);
 
-  // get a vector of employee index
-  string userPrompt = "";
-  vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
+  bool userConfirmation = false;
+  while(!userConfirmation){
+    // get a vector of employee index
+    string userPrompt = "Please select indices to fire accordingly. More than 1 index can be selected, separated by a space. Indices: ";
+    vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
 
-  // prompt for confirmation
+    // prompt for confirmation
+    cout << "Are you sure you want to continue? " << endl;
+    userConfirmation = getValueByBoolean("(y/n)");
 
-  // if user confirms yes, fire each employee in array by index, by updating isAnEmployee attribute, then return to navigation menu
+    // if user confirms yes, fire each employee in array by index, by updating isAnEmployee attribute, then return to navigation menu
+    changeEmployeeStatus(indices, employeesArray);
 
-  // if user confirms no, prompt if user wants to fire any employees
+    // if user confirms no, prompt if user wants to fire any employees
+    cout << "Do you wish to fire an employee? ";
+    userConfirmation = getValueByBoolean("(y/n)");
 
-  // if yes, repeat indices prompt process
-
-  // if no, return to navigation menu
-
+  }
+  cout << "\nThe employee list after firing is: " << endl;
+  showEmployeeList(employeesArray);
 
   cout << "*****************************************************" << endl;
 }
@@ -489,15 +502,7 @@ void deleteEmployeeRecords(vector <Employee> & employeesArray) {
   string userPrompt = "";
   vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
 
-  // prompt for confirmation
-
-  // if user confirms yes, delete each employee in array by index
-
-  // if user confirms no, prompt if user wants to delete any employees
-
-  // if yes, repeat indices prompt process
-
-  // if no, return to navigation menu
+  
 
   cout << "*****************************************************" << endl;
 }
