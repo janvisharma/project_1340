@@ -467,8 +467,8 @@ void fireEmployees(vector <Employee> & employeesArray) {
   // show employees list
   showEmployeeList(employeesArray);
 
-  bool userConfirmation = false;
-  while(!userConfirmation){
+  bool userConfirmation = true;
+  while(userConfirmation){
     // get a vector of employee index
     string userPrompt = "Please select indices to fire accordingly. More than 1 index can be selected, separated by a space. Indices: ";
     vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
@@ -478,10 +478,13 @@ void fireEmployees(vector <Employee> & employeesArray) {
     userConfirmation = getValueByBoolean("(y/n)");
 
     // if user confirms yes, fire each employee in array by index, by updating isAnEmployee attribute, then return to navigation menu
-    changeEmployeeStatus(indices, employeesArray);
+    if(userConfirmation){
+      changeEmployeeStatus(indices, employeesArray);
+      break;
+    }
 
     // if user confirms no, prompt if user wants to fire any employees
-    cout << "Do you wish to fire an employee? ";
+    cout << "Do you still want to fire an employee? ";
     userConfirmation = getValueByBoolean("(y/n)");
 
   }
@@ -497,12 +500,23 @@ void deleteEmployeeRecords(vector <Employee> & employeesArray) {
   cout << "*****************************************************" << endl;
 
   // show employees list
+  showEmployeeList(employeesArray);
 
   // get a vector of employee index
-  string userPrompt = "";
-  vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
+  bool userConfirmation = false;
 
-  
+  while(!userConfirmation){
+
+    string userPrompt = "Please select indices to delete accordingly. More than 1 index can be selected, separated by a space. Indices: ";
+    vector <int> indices = getIndices(userPrompt, "employee indices", employeesArray.size());
+
+    // prompt for confirmation
+    cout << "Are you sure you want to continue? " <<  endl;
+    userConfirmation = getValueByBoolean("(y/n)");
+
+  }
+
+
 
   cout << "*****************************************************" << endl;
 }
